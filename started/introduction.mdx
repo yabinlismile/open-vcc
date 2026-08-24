@@ -1,16 +1,16 @@
 ---
 title: "RemCard API"
 sidebarTitle: "文档介绍"
-description: "欢迎使用 RemCard API 文档。本文档是针对 RemCard ToB 的卡业务，目前支持实体卡、虚拟卡、共享卡等卡种类（不同卡BIN），不同卡种支持的法币和手续费不同，接口调用参数也略有差别."
+description: "欢迎使用 RemCard API 文档。本文档是针对 RemCard ToB 的卡业务，目前支持实体卡、虚拟卡等卡种类（不同卡BIN），不同卡种支持的法币和手续费不同，接口调用参数也略有差别."
 ---
 
 
 # API 使用步骤
 
     1. 请在 http://47.237.176.51:8101 注册机构账户，如果访问不了请提供你的IP地址。
-    2. RemCard审核通过后，机构才可以登录成功。
+    2. RemCard 平台审核通过后，机构才可以登录成功。
     3. 机构登录，查看钱包地址，给钱包充值，支持 USDT、BTC、ETH 等。
-    4. 机构登录，创建 Appkey 和 secret，并添加ip白名单地址 最多可以加10个 中间以[,]分割 可选择配置 webhook 回调地址。
+    4. 机构登录，创建 appkey 和 secret，并添加ip白名单地址 最多可以加10个 中间以[,]分割 可选择配置 webhook 回调地址。
     5. 调用 API 进行 KYC、开卡、激活卡、充值等操作，状态变更 RemCard 会通过回调地址通知机构服务器。
 
 <Note>

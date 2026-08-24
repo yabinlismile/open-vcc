@@ -9,7 +9,7 @@ description: ""
 
 * Open API 请求都使用 `HMAC` 认证，以保证请求的完整性，真实性，同时做身份认证和鉴权。
 
-* **分页** 查询记录列表都有分页，分页参数：page_num 表示页数，page_size 表示每页大小。接口 DTO 统一返回 total，records。
+* **分页** 查询记录列表都有分页，分页参数：page_num 表示页数（默认首页），page_size 表示每页大小（默认20条）。接口 DTO 统一返回 total，records。
 
 * **国家** 两位国家代码，参照 ISO 3166-1 alpha-2 编码标准。
 
@@ -29,20 +29,4 @@ description: ""
 | code      | int    | 错误码。`0`：正常，非`0`：异常|
 | msg       | String | 成功为 `SUCCESS`，失败为错误描述|
 | result    | Object | 返回信息 |
-
-
-## 通知报文模板
-
-<Note>
-请先在机构端后台配置 Webhook 回调地址, 收到推送后验签。推送事件的数据结构为
-</Note>
-
-| 名称 | 类型 | 描述 |
-| --- | --- | --- |
-| action | String | 推送类型 |
-| events | String\[\] | 推送的消息数组 |
-| events\[n\].id | String | 推送的唯一标识符 |
-| events\[n\].create\_time | long | 事件发生的时间，默认为UTC时间 |
-| events\[n\].params | Object | 本次推送的消息内容，JSON 对象 |
-
 

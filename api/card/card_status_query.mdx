@@ -5,7 +5,7 @@ description: "用于查询开卡申请的卡片状态"
 ---
 
 ```
-GET https://{baseUrl}/api/v1/debit-cards
+GET https://{baseUrl}/api/v1/card/queryStatus
 ```
 
 ## 请求参数
@@ -28,7 +28,7 @@ GET https://{baseUrl}/api/v1/debit-cards
 | --- | --- | --- |
 | acct\_no | String | 机构端用户编号(机构端唯一) |
 | card\_type\_id | String | 卡类型ID |
-| card\_no | int | 银行卡号 |
+| card\_no | String | 银行卡号 |
 | status | int | 状态码，详见 [卡片状态](/api/reference/enum_card_status#卡状态) |
 | reason | String | 激活失败原因。其他情况为空字符串 |
 | cust_tx_id | String | 机构的开卡流水号 |
