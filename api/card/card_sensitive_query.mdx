@@ -1,10 +1,10 @@
 ---
-title: "Query Sensitive Card Details"
-sidebarTitle: "Sensitive Details"
-description: "POST /api/v1/bank/virtualcard or /api/v1/bank/card — retrieve encrypted sensitive card data (card number, CVV, expiration) using your uploaded public key."
+title: "卡敏感信息查询"
+sidebarTitle: "卡敏感信息查询"
+description: "查询卡敏感信息"
 ---
 
-```text
+```
 虚拟卡：POST https://{baseUrl}/api/v1/bank/virtualcard
 
 实体卡：POST https://{baseUrl}/api/v1/bank/card
@@ -17,6 +17,7 @@ description: "POST /api/v1/bank/virtualcard or /api/v1/bank/card — retrieve en
 | card\_no | String | Required | card no |
 | publickey | String | Optional | 我们会使用这个公钥替代 默认的公钥（需要自己调用接口上传）加密数据，支持ECIES和RSA |
 
+
 ## 响应参数
 
 | Parameter | Type | Description |
@@ -24,10 +25,10 @@ description: "POST /api/v1/bank/virtualcard or /api/v1/bank/card — retrieve en
 | encrypt\_data | String\[\] | 敏感密文信息：敏感信息加密后的数据 |
 | public\_key | String | 公钥 |
 
+
 ## 交易报文
 
 <CodeGroup>
-
 ```json Request
 {
 	"card_no": "26642315512510000013469",
@@ -64,13 +65,12 @@ description: "POST /api/v1/bank/virtualcard or /api/v1/bank/card — retrieve en
 	}
 }
 ```
-
 </CodeGroup>
+
 
 ## 解密报文
 
 <CodeGroup>
-
 ```json 实体卡解密结果
 {
 	"card_number": "123456789101212"
@@ -84,5 +84,4 @@ description: "POST /api/v1/bank/virtualcard or /api/v1/bank/card — retrieve en
 	"expire": "12/27"
 }
 ```
-
 </CodeGroup>

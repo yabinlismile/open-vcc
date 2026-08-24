@@ -1,10 +1,10 @@
 ---
-title: "Query Card Billing Statement"
-sidebarTitle: "Billing Statement"
-description: "POST /api/v1/bank/transaction-record — retrieve monthly billing statements and transaction history for a card by month range or specific transaction ID."
+title: "卡账单查询"
+sidebarTitle: "卡账单查询"
+description: "查询卡交易账单记录"
 ---
 
-```text
+```
 POST https://{baseUrl}/api/v1/bank/transaction-record
 ```
 
@@ -17,6 +17,7 @@ POST https://{baseUrl}/api/v1/bank/transaction-record
 | former\_month\_year | String | 必填 | 指定查询的月份(格式“012020”) |
 | latter\_month\_year | String | 必填 | 指定查询的月份(格式“012020”) |
 | tx\_id | String | 选填（有tx\_id时，月份可不填） | 指定交易id查询 |
+
 
 ## 响应参数
 
@@ -47,12 +48,12 @@ POST https://{baseUrl}/api/v1/bank/transaction-record
 | bank\_tx\_list\[0\].tx\_amount | String | 实际交易货币的交易金额 |
 | bank\_tx\_list\[0\].end\_bal | String | 交易后余额。如果是0，代表没交易后余额 |
 | bank\_tx\_list\[0\].origin\_transaction\_id | String | 原消费交易id，退款交易才可能有值 |
-| bank\_tx\_list\[0\].merchant\_country | String | 商户国家 |
+| bank\_tx\_list\[0\].merchant_country | String | 商户国家 |
+
 
 ## 交易报文
 
 <CodeGroup>
-
 ```json Request
 {
 	"card_no": "26641088522630000018110",
@@ -109,5 +110,4 @@ POST https://{baseUrl}/api/v1/bank/transaction-record
     ]
  }
 ```
-
 </CodeGroup>

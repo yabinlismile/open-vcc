@@ -1,17 +1,17 @@
 ---
-title: "Submit User KYC"
-sidebarTitle: "Submit KYC"
-description: "POST /api/v1/customers/accounts — submit identity documents and personal details to create and KYC-verify a user account."
+title: "用户KYC"
+sidebarTitle: "用户KYC"
+description: "如果KYC审核失败，也使用这个接口重新提交"
 ---
 
-```text
+```
 POST https://{baseUrl}/api/v1/customers/accounts
 ```
 
 ## 请求参数
 
 | Parameter | Type | Requirement | Description |
-| :-- | :-- | :-- | :-- |
+| :--- | :--- | :-- | :--- |
 | acct\_no | String | 必填 | 机构端用户编号(机构端唯一)，字符长度最大64 |
 | acct\_name | String | 必填 | 机构端用户名，字符长度最大64 |
 | first\_name | String | 必填 | 真实用户名，字符长度最大50 |
@@ -27,14 +27,14 @@ POST https://{baseUrl}/api/v1/customers/accounts
 | front\_doc | String | 条件必填 | 正面照。base64编码, 照片文件大小应小于2M。token为空时必填 |
 | back\_doc | String | 选填 | 反面照，doc\_type是idcard时必须填写。base64编码，照片文件大小应小于2M |
 | mix\_doc | String | 条件必填 | 手持证件照。base64编码，照片文件大小应小于2M。token为空时必填 |
-| country\_code | String | 必填 | 手机国际区号，如“\+86”。字符长度最大5 |
+| country\_code | String | 必填 | 手机国际区号，如“+86”。字符长度最大5 |
 | mobile | String | 必填 | 手机号，字符长度最大32 |
 | mail | String | 必填 | 邮箱，不支持163.com的邮箱。字符长度最大64 |
 | address | String | 必填 | 通讯地址，银行卡会寄到该地址。字符长度最大256 |
 | zipcode | String | 必填 | 邮编，字符长度最大20 |
 | maiden\_name | String | 选填 | 妈妈的名字，字符长度最大255 |
-| card\_type\_id | String | 条件必填 | 银行卡种类对应的id,比如 10010001，card\_type\_id和bank\_id必填其一 |
-| bank\_id | String | 条件必填 | 银行种类对应的id,比如 1001，card\_type\_id和bank\_id必填其一 |
+| card\_type\_id | String | 条件必填 | 银行卡种类对应的id,比如 10010001，card_type_id和bank_id必填其一 |
+| bank_id | String | 条件必填 | 银行种类对应的id,比如 1001，card_type_id和bank_id必填其一 |
 | kyc\_info | String | 选填 | KYC 其他信息 |
 | mail\_verification\_code | String | 选填 | 邮箱验证码 |
 | mail\_token | String | 选填 | 发送邮件后返回的token |
@@ -42,7 +42,7 @@ POST https://{baseUrl}/api/v1/customers/accounts
 | sign\_img | String | 选填 | 签名照片。base64编码，照片文件大小应小于1M |
 | poa\_doc | String\[3\] | 选填 | 地址证明照片（暂不支持）。base64编码，照片或PDF文件每个文件大小应小于2M |
 | card\_number | String | 选填 | 绑卡卡号，用于提前售卡，只支持J卡 |
-| date\_of\_expiry | String | 选填 | 证件到期日期，yyyy-MM-dd |
+| date_of_expiry | String | 选填 | 证件到期日期，yyyy-MM-dd |
 | provider | String | 选填 | 1 SUMSUB 2 MYINFO 3 JUMIO 4 DIDIT 5 SHUFTI |
 | token | String | 选填 | 令牌验证 |
 
@@ -52,10 +52,9 @@ import commonResponse from '/snippets/common_response.mdx';
 
 <commonResponse />
 
+
 ## 交易报文
-
 <CodeGroup>
-
 ```json Request
 {
 	"acct_name": "tevau_uat_008_test",
@@ -94,5 +93,4 @@ import commonResponse from '/snippets/common_response.mdx';
   "result": true
 }
 ```
-
 </CodeGroup>
