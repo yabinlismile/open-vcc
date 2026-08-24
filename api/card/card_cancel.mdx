@@ -1,10 +1,10 @@
 ---
-title: "卡注销"
-sidebarTitle: "卡注销"
-description: "注销卡"
+title: "Cancel a Card"
+sidebarTitle: "Cancel"
+description: "POST /api/v1/bank/cancel — permanently cancel a card. Cancellation is irreversible and all future transactions will be rejected."
 ---
 
-```
+```text
 POST https://{baseUrl}/api/v1/bank/cancel
 ```
 
@@ -14,23 +14,23 @@ POST https://{baseUrl}/api/v1/bank/cancel
 | --- | --- | --- | --- |
 | card\_no | String | 必填 | 银行卡ID |
 
-
 ## 响应参数
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| card_type_id | String | 卡类型ID |
-| card_no | String | 银行卡ID |
-| acct_no | String | 机构端用户编号(机构端唯一) |
+| card\_type\_id | String | 卡类型ID |
+| card\_no | String | 银行卡ID |
+| acct\_no | String | 机构端用户编号(机构端唯一) |
 | status | int | 卡片状态码，详见[卡片状态](/api/reference/enum_card_status#卡状态) |
 
 <Note>
-目前只有部分卡支持，使用前请询问 注意 该操作时不可逆的，后续所有交易都将被拒绝 需等待60天后释放余额 退回备付金中
+  目前只有部分卡支持，使用前请询问 注意 该操作时不可逆的，后续所有交易都将被拒绝 需等待60天后释放余额 退回备付金中
 </Note>
 
 ## 交易报文
 
 <CodeGroup>
+
 ```json Request
 {
 	"card_no": "26641088522630000018110"
@@ -49,4 +49,5 @@ POST https://{baseUrl}/api/v1/bank/cancel
 	}
 }
 ```
+
 </CodeGroup>

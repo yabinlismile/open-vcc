@@ -1,0 +1,65 @@
+---
+title: "Receive Real-Time Events with ByCard Webhooks"
+sidebarTitle: "Webhooks"
+description: "ByCard sends webhook notifications for KYC results, card status changes, deposits, and transactions. Configure your endpoint and verify payloads."
+---
+
+ByCard delivers real-time event notifications to your server via webhooks. Instead of polling for status changes, you configure a callback URL in the dashboard and receive structured push messages for KYC results, card lifecycle events, deposits, transactions, and more.
+
+## Configure your webhook endpoint
+
+Set your callback URL in the ByCard dashboard under webhook settings. ByCard sends HTTP POST requests to this address whenever a subscribed event occurs. Your endpoint must respond with HTTP 200 and a JSON body indicating success.
+
+## Webhook envelope structure
+
+Each webhook request contains a single JSON object with the following fields:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | String | The event type identifier. |
+| `events` | Array | A list of event objects. |
+| `events[n].id` | String | A unique identifier for this push message. |
+| `events[n].create_time` | Long | The event timestamp in UTC milliseconds. |
+| `events[n].params` | Object | The event-specific payload as a JSON object. |
+
+## Respond to webhooks
+
+Your endpoint must return a JSON response with the following structure to acknowledge receipt:
+
+```json
+{
+  "code": 0,
+  "msg": "SUCCESS"
+}
+```
+
+If ByCard does not receive a successful response, it may retry the delivery. Ensure your endpoint is idempotent: process the event based on the unique `id` rather than timestamp alone.
+
+## Event types
+
+The following table lists the webhook events ByCard can send to your endpoint.
+
+| Action | Description |
+| --- | --- |
+| `kyc-status` | KYC application result: success or failure with reason. |
+| `open-card` | The card is ready for application or has failed production. |
+| `card-activate` | Card activation result: activated, review pending, or failed. |
+| `card-deposit` | Deposit result: success, failure, or cancellation. |
+| `credit-card-consume` | A credit card transaction occurred: spend, refund, or adjustment. |
+| `debit-card-consume` | A debit card transaction occurred: spend, refund, or adjustment. |
+| `card-3ds-opt` | A one-time password (OTP) was generated for a 3D Secure transaction. |
+| `card-3ds-auth-confirm` | A 3D Secure transaction requires your confirmation before proceeding. |
+| `app-bind` | An OTP for binding the card to Apple Pay or Google Pay. |
+| `app-bind-fail` | Card binding to Apple Pay or Google Pay failed with a reason. |
+| `card-status` | Card status change: freeze, unfreeze, lost, password reset, replacement, or cancellation. |
+| `auth-fee-deduction` | An authorization fee was deducted from your institution wallet. |
+| `provision-deposit` | A deposit to your institution provision wallet succeeded. |
+| `card-transaction-confirm` | A card transaction is pending confirmation: approve or decline. |
+
+<Warning>
+  For the `card-transaction-confirm` event, your response time must be under 1 second. Responses slower than 1.5 seconds are treated as a rejection.
+</Warning>
+
+<Tip>
+  Store the `events[n].id` field for at least 24 hours to deduplicate retries and avoid double-processing the same event.
+</Tip>

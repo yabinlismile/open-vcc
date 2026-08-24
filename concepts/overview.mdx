@@ -1,0 +1,56 @@
+---
+title: "How ByCard Works: Platform Overview"
+sidebarTitle: "Overview"
+description: "Understand the ByCard integration model: institutions, end-users, card types, environments, and the full card lifecycle from KYC to transaction."
+---
+
+ByCard is a B2B card issuing platform that lets institutions onboard end-users, issue debit and credit cards, fund those cards with digital assets, and receive real-time event notifications. As an institution, you integrate directly with the ByCard API to manage the full card lifecycle on behalf of your users.
+
+## Institution model
+
+You act as the institution. Your end-users do not interact with ByCard directly. Instead, you collect user information, submit KYC data, request cards, and manage balances through API calls authenticated with your institution credentials. ByCard handles card production, banking rails, and transaction processing behind the scenes.
+
+## Environments
+
+ByCard provides two isolated environments. Use the sandbox to build and test your integration before moving to production.
+
+| Environment | Dashboard | API base URL |
+| --- | --- | --- |
+| Sandbox | [https://customer-sandbox.bycard.io](https://customer-sandbox.bycard.io) | [https://api-sandbox.bycard.io](https://api-sandbox.bycard.io) |
+| Production | [https://customer.bycard.io](https://customer.bycard.io) | [https://api.bycard.io](https://api.bycard.io) |
+
+<Note>
+  Both environments enforce IP whitelisting. Add your server IPs in the dashboard before making requests.
+</Note>
+
+## Integration steps
+
+<Steps>
+  <Step title="Register your institution">
+    Sign up at the production dashboard. ByCard reviews and approves your account before you can log in.
+  </Step>
+  <Step title="Fund your wallet">
+    After approval, view your deposit wallet address in the dashboard and fund it with USDT, BTC, or ETH.
+  </Step>
+  <Step title="Create API credentials">
+    Generate an API Key and Secret, add up to ten IP whitelist addresses separated by commas, and optionally configure a webhook callback URL.
+  </Step>
+  <Step title="Integrate the API">
+    Call the API to submit KYC, apply for cards, activate them, deposit funds, and handle lifecycle events.
+  </Step>
+  <Step title="Receive webhooks">
+    ByCard pushes event notifications to your configured webhook endpoint so you can track KYC results, card status changes, deposits, and transactions in real time.
+  </Step>
+</Steps>
+
+## Wallet funding
+
+Your institution wallet holds the assets used to fund cards and pay fees. Supported deposit coins include USDT, BTC, and ETH. All fees are deducted from this wallet balance. You can query your balance at any time with the [institution balance query](/api/institution/balance_query) endpoint.
+
+## IP whitelist requirement
+
+Every request to the ByCard API must originate from an IP address on your whitelist. You can configure up to ten addresses in the dashboard. Requests from unlisted IPs are rejected with an authentication error.
+
+<Tip>
+  Start every integration in the sandbox environment. This lets you test KYC flows, card applications, and deposits without using real funds.
+</Tip>

@@ -1,0 +1,58 @@
+---
+title: "KYC Verification and User Identity in ByCard"
+sidebarTitle: "KYC"
+description: "ByCard requires KYC verification before issuing cards. Learn the identity document requirements, KYC statuses, and how to handle rejections."
+---
+
+ByCard requires Know Your Customer (KYC) verification before any card can be issued. You collect identity documents and user details through your own interface, then submit them to ByCard via the API. Once approved, the user is eligible for card applications.
+
+## Why KYC is required
+
+Regulatory compliance and risk management require ByCard to verify the identity of every end-user. You cannot apply for a card on behalf of a user until their KYC status is successful.
+
+## Accepted document types
+
+ByCard accepts the following identity documents. The required fields depend on the document type.
+
+| Document type | Code | Requirements |
+| --- | --- | --- |
+| Passport | `passport` | Front page photo required. Handheld photo required. |
+| National ID card | `idcard` | Front and back photos required. Handheld photo required. |
+| Driver's license | `driver` | Front page photo required. Handheld photo required. |
+
+## Photo requirements
+
+Submit photos as base64-encoded strings. Each image must be smaller than 2 MB.
+
+| Field | When required | Description |
+| --- | --- | --- |
+| `front_doc` | Required if `token` is empty | Front side of the identity document. |
+| `back_doc` | Required when `doc_type` is `idcard` | Back side of the identity document. |
+| `mix_doc` | Required if `token` is empty | Handheld photo of the user holding the document. |
+
+<Warning>
+  Ensure photos are clear, well-lit, and uncropped. Blurry or incomplete images are the most common cause of KYC rejection.
+</Warning>
+
+## KYC status flow
+
+After you submit a KYC request, ByCard reviews the documents and returns a status.
+
+| Status | Meaning |
+| --- | --- |
+| Success | KYC passed. The user can now apply for cards. |
+| Failed | KYC rejected. A failure reason is provided so you can correct and resubmit. |
+
+If the status is Failed, update the user's information and photos based on the reason code, then resubmit using the same KYC endpoint.
+
+## Liveness verification
+
+Some card types or jurisdictions require a liveness check in addition to document upload. You can request a liveness verification link through the API. The returned URL directs the user to complete a facial recognition step. The link expires after a limited time.
+
+## Handling rejections
+
+When KYC fails, the webhook and query responses include a specific reason code. Common failure reasons include incorrect country or nationality, invalid document photos, unclear handheld photos, incorrect address or phone number, wrong name or birthday, expired passport, and incorrect gender.
+
+<Tip>
+  Always store the `cust_tx_id` value you send with the KYC request. Use it to correlate webhook events and retry submissions.
+</Tip>

@@ -1,47 +1,84 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Get Started with the ByCard API"
+sidebarTitle: "Quickstart"
+description: "Learn how to make your first ByCard API call in minutes: register, get credentials, and submit a KYC request."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+This guide walks you through registering a sandbox account, creating API credentials, signing your first request with HMAC-SHA256, and submitting a KYC request for an end-user.
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
-
-    ```bash
-    npm install your-package
-    ```
+  <Step title="Register and get approved">
+    Go to [https://customer-sandbox.bycard.io](https://customer-sandbox.bycard.io) and create an institution account. Fill in your business details and wait for ByCard to approve your application. You will receive access to the sandbox dashboard once approved.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
-
-    ```bash
-    your-cli init
-    ```
+  <Step title="Create API credentials">
+    In the sandbox dashboard, navigate to the API keys section and generate a new App Key and Secret. Add your server IP address to the IP whitelist so that only your servers can call the API.
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
+  <Step title="Build the HMAC signature">
+    Every request must include an `Authorization` header signed with HMAC-SHA256. Build the signature string by concatenating the following values in order:
 
-    ```bash
-    your-cli start
+    ```text
+    {timestamp}{HTTP_METHOD}{ApiKey}{requestURI}{sortedBodyString}
     ```
+
+    Then compute the HMAC-SHA256 digest using your App Secret, and set the header:
+
+    ```text
+    Authorization: Railone:{ApiKey}:{timestamp}:{signature}
+    ```
+
+    If your API key was created with a password, also include the `Access-Passphrase` header.
+  </Step>
+  <Step title="Submit a KYC request">
+    Send a POST request to the KYC endpoint with your auth header and a minimal JSON body. Replace `{ApiKey}`, `{signature}`, and `{timestamp}` with your actual values.
+
+    <CodeGroup>
+
+    ```bash cURL
+    curl -X POST "https://api-sandbox.bycard.io/api/v1/customers/accounts" \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Railone:{ApiKey}:{timestamp}:{signature}" \
+      -d '{
+        "acct_no": "test_user_001",
+        "acct_name": "Test User",
+        "first_name": "Test",
+        "last_name": "User",
+        "birthday": "1990-01-01",
+        "city": "Hong Kong",
+        "state": "Hong Kong",
+        "country": "HK",
+        "nationality": "HK",
+        "doc_no": "A12345678",
+        "doc_type": "passport",
+        "country_code": "+852",
+        "mobile": "91234567",
+        "mail": "test@example.com",
+        "address": "1 Test Street",
+        "zipcode": "999077",
+        "bank_id": "6300"
+      }'
+    ```
+
+    </CodeGroup>
+  </Step>
+  <Step title="Check the response">
+    A successful KYC submission returns the standard ByCard response envelope with `code` set to `0`.
+
+    <CodeGroup>
+
+    ```json Response
+    {
+      "code": 0,
+      "msg": "SUCCESS",
+      "result": true
+    }
+    ```
+
+    </CodeGroup>
+
+    If `code` is non-zero, the request failed. Check the `msg` field for the error description.
   </Step>
 </Steps>
 
 <Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
-
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
+  For the complete signature algorithm, parameter sorting rules, and code examples in multiple languages, see the [Authentication](/started/authentication) page.
 </Tip>

@@ -1,10 +1,10 @@
 ---
-title: "卡申请"
-sidebarTitle: "卡申请"
-description: "用户申请卡片"
+title: "Apply for a Card"
+sidebarTitle: "Apply"
+description: "POST /api/v1/debit-cards — apply for a debit or credit card for a KYC-verified user. Returns card_no for all subsequent card operations."
 ---
 
-```
+```text
 POST https://{baseUrl}/api/v1/debit-cards
 ```
 
@@ -21,23 +21,22 @@ POST https://{baseUrl}/api/v1/debit-cards
 | state | String | 选填 | 省份，字符长度最大100 |
 | city | String | 选填 | 城市，字符长度最大100 |
 | zipcode | String | 选填 | 邮编，字符长度最大20 |
-| country_code | String | 选填 | 手机国际区号，如“+86”。字符长度最大5 |
+| country\_code | String | 选填 | 手机国际区号，如“\+86”。字符长度最大5 |
 | mobile | String | 选填 | 手机号，字符长度最大32 |
-| cust_tx_id | String | 选填 | 机构的开卡流水号，最大64 |
-
+| cust\_tx\_id | String | 选填 | 机构的开卡流水号，最大64 |
 
 ## 响应参数
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| card\_no | String | 分配的银行卡ID，查询时用card\_no，避免真是卡号信息泄露。生成规则：机构id+8位随机数 +卡种id +卡最后四位 |
+| card\_no | String | 分配的银行卡ID，查询时用card\_no，避免真是卡号信息泄露。生成规则：机构id\+8位随机数 \+卡种id \+卡最后四位 |
 | card\_number | String | 分配的真实银行卡号, 只显示前6位和后4位 |
 | status | int | 状态码，详见 [卡片状态](/api/reference/enum_card_status#卡状态) |
-
 
 ## 交易报文
 
 <CodeGroup>
+
 ```json Request
 {
   "acct_no": "tevau_uat_008",
@@ -66,4 +65,5 @@ POST https://{baseUrl}/api/v1/debit-cards
 	}
 }
 ```
+
 </CodeGroup>

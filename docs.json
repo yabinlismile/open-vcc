@@ -1,22 +1,18 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "bycard",
-  "theme": "mint",
+  "name": "ByCard",
+  "theme": "luma",
   "colors": {
     "primary": "#1A6BF0",
     "light": "#E8F0FE",
     "dark": "#0D3F9C"
-  },
-  "logo": {
-    "light": "/logo/bycard.png",
-    "dark": "/logo/bycard.png"
   },
   "favicon": "/favicon.svg",
   "navbar": {
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "http://47.237.176.51:8101"
+      "href": "https://customer.bycard.io"
     }
   },
   "navigation": {
@@ -25,11 +21,26 @@
         "tab": "Documentation",
         "groups": [
           {
-            "group": "快速开始",
+            "group": "Get Started",
+            "pages": []
+          },
+          {
+            "group": "Core Concepts",
             "pages": [
-              "started/introduction",
-              "started/interface",
-              "started/authentication"
+              "concepts/overview",
+              "concepts/cards",
+              "concepts/kyc",
+              "concepts/webhooks",
+              "concepts/errors"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/onboard-user",
+              "guides/issue-card",
+              "guides/fund-card",
+              "guides/manage-card"
             ]
           }
         ]
@@ -37,6 +48,10 @@
       {
         "tab": "API Reference",
         "groups": [
+          {
+            "group": "Overview",
+            "pages": []
+          },
           {
             "group": "KYC",
             "pages": [
@@ -50,65 +65,23 @@
             ]
           },
           {
-            "group": "卡片",
-            "pages": [
-              "api/card/card_apply",
-              "api/card/card_activate",
-              "api/card/card_status_query",
-              "api/card/card_activate_query",
-              "api/card/card_balance_query",
-              "api/card/card_bill_query",
-              "api/card/card_sensitive_query",
-              "api/card/card_freeze",
-              "api/card/card_unfreeze",
-              "api/card/card_cancel"
-            ]
+            "group": "Cards",
+            "pages": []
           },
           {
-            "group": "交易",
-            "pages": [
-              "api/transaction/debit_card_deposit",
-              "api/transaction/debit_card_deposit_query",
-              "api/transaction/debit_card_deposit_page_query",
-              "api/transaction/credit_card_balance_modify",
-              "api/transaction/credit_card_balance_modify_query",
-              "api/transaction/credit_card_balance_query",
-              "api/transaction/credit_card_limit_modify",
-              "api/transaction/credit_card_limit_query",
-              "api/transaction/card_withdraw",
-              "api/transaction/card_3ds_auth_confirm",
-              "api/transaction/card_transaction_query"
-            ]
+            "group": "Transactions",
+            "pages": []
           },
           {
-            "group": "机构交互",
-            "pages": [
-              "api/institution/balance_query",
-              "api/institution/plat_public_key",
-              "api/institution/plat_public_key_upload"
-            ]
+            "group": "Institution",
+            "pages": []
           },
           {
-            "group": "回调通知",
-            "pages": [
-              "api/webhook/kyc_events",
-              "api/webhook/open_card_events",
-              "api/webhook/card_activate_events",
-              "api/webhook/card_deposit_events",
-              "api/webhook/credit_card_consume_events",
-              "api/webhook/debit_card_consume_events",
-              "api/webhook/card_3ds_opt_events",
-              "api/webhook/card_3ds_auth_confirm_events",
-              "api/webhook/app_bind_events",
-              "api/webhook/app_bind_fail_events",
-              "api/webhook/card_status_events",
-              "api/webhook/auth_fee_deduction_events",
-              "api/webhook/provision_deposit_events",
-              "api/webhook/card_transaction_confirm_events"
-            ]
+            "group": "Webhooks",
+            "pages": []
           },
           {
-            "group": "引用数据",
+            "group": "Reference",
             "pages": [
               "api/reference/enum_card_status",
               "api/reference/enum_trans_status",

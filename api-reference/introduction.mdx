@@ -1,0 +1,115 @@
+---
+title: "ByCard API Reference Overview"
+sidebarTitle: "Overview"
+description: "Base URLs, authentication, request format, pagination, response structure, and error handling for the ByCard REST API."
+---
+
+The ByCard API is a RESTful service for virtual and physical card issuing, KYC onboarding, and transaction management. All requests use JSON over HTTPS, and responses follow a consistent envelope structure. This page covers the base URLs, authentication scheme, data formats, and pagination rules you need to make your first successful call.
+
+## Base URLs
+
+| Environment | Base URL |
+| :-- | :-- |
+| Sandbox | `https://api-sandbox.bycard.io` |
+| Production | `https://api.bycard.io` |
+
+All endpoints are versioned under `/api/v1/`.
+
+## Authentication
+
+ByCard uses HMAC-SHA256 request signing. For every request, compute the signature string as:
+
+```text
+{timestamp}{HTTP_METHOD}{ApiKey}{requestURI}{sortedBodyString}
+```
+
+- `timestamp`: current UNIX time in **milliseconds**
+- `HTTP_METHOD`: uppercase method, e.g. `POST`
+- `ApiKey`: your institution API key
+- `requestURI`: the full request path, e.g. `/api/v1/customers/accounts`
+- `sortedBodyString`: for `POST`/`PUT`, sort the JSON body keys alphabetically and stringify; for `GET`, use an empty string
+
+Set the `Authorization` header:
+
+```text
+Authorization: Railone:{ApiKey}:{timestamp}:{signature}
+```
+
+If the API key was created with a password, also include:
+
+```text
+Access-Passphrase: {your_passphrase}
+```
+
+<Warning>
+  Keep your API key and passphrase secret. Do not commit them to version control or expose them in client-side code.
+</Warning>
+
+## Request format
+
+- **Content-Type**: `application/json`
+- **HTTP methods**: `GET`, `POST`, `PUT`
+- All request bodies are JSON objects
+- Query parameters for `GET` requests are URL-encoded
+
+## Data types and formats
+
+| Type | Format | Example |
+| :-- | :-- | :-- |
+| Amount | String (decimal) | `"100.50"` |
+| Timestamp | UNIX milliseconds | `1715683200000` |
+| Country code | ISO 3166-1 alpha-2 | `"HK"`, `"US"` |
+
+<Note>
+  Always pass monetary amounts as strings to avoid floating-point precision issues.
+</Note>
+
+## Pagination
+
+List endpoints support cursor-style pagination with these query parameters:
+
+| Parameter | Type | Description |
+| :-- | :-- | :-- |
+| `page_num` | int | Page number (1-based) |
+| `page_size` | int | Number of records per page |
+
+Paginated responses return:
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `total` | int | Total number of records |
+| `records` | array | Array of result objects for the current page |
+
+## Query interval limits
+
+When a list endpoint accepts time range filters (`former_time` and `latter_time`), the maximum query interval is **1 month**. Requests spanning a longer period will be rejected.
+
+## Response structure
+
+Every API response uses this envelope:
+
+```json
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": { }
+}
+```
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `code` | int | `0` indicates success; any non-zero value indicates an error |
+| `msg` | string | Human-readable status message |
+| `result` | object / array / boolean | The actual response payload; shape varies by endpoint |
+
+## Error handling
+
+When `code` is non-zero, the `msg` field contains the error description. Common error categories include authentication failures, validation errors, and rate limiting. Refer to the [Error Codes](/api/reference/enum_error_code) reference for a complete list of codes and recommended actions.
+
+<Tip>
+  Log the `code` and `msg` values for every non-zero response to help with debugging and support escalation.
+</Tip>
+
+## Idempotency
+
+For creation and mutation endpoints, include a unique `cust_tx_id` in the request body to ensure idempotent processing. The API ignores duplicate requests with the same `cust_tx_id` within a 24-hour window.

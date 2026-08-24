@@ -1,10 +1,10 @@
 ---
-title: "卡余额查询"
-sidebarTitle: "卡余额查询"
-description: "查看用户卡余额"
+title: "Query Card Balance"
+sidebarTitle: "Balance"
+description: "POST /api/v1/bank/balance — retrieve the current and available balance for a card in both the card currency and USD."
 ---
 
-```
+```text
 POST https://{baseUrl}/api/v1/bank/balance
 ```
 
@@ -14,7 +14,6 @@ POST https://{baseUrl}/api/v1/bank/balance
 | --- | --- | --- | --- |
 | card\_no | String | 必填 | 银行卡ID |
 | card\_currency | String | 选填 | 卡币种，双币种卡才需要填写 |
-
 
 ## 响应参数
 
@@ -27,10 +26,10 @@ POST https://{baseUrl}/api/v1/bank/balance
 | available\_balance | String | 可用余额（卡支持的货币） |
 | available\_balance\_usd | String | 可用余额（USD） |
 
-
 ## 交易报文
 
 <CodeGroup>
+
 ```json Request
 {
     "card_no": "26641088522630000018110"
@@ -51,4 +50,5 @@ POST https://{baseUrl}/api/v1/bank/balance
     }
 }
 ```
+
 </CodeGroup>
