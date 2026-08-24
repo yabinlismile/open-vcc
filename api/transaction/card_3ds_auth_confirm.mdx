@@ -1,0 +1,45 @@
+---
+title: "卡3DS确认"
+sidebarTitle: "卡3DS确认"
+description: "用于卡交易3DS授权确认"
+---
+
+```
+POST https://{baseUrl}/api/v1/bank/3dsConfirm
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card\_no | String | 必填 | 银行卡ID |
+| txn\_id | String | 必填 | 流水号，对应3ds授权通知的流水号 |
+| status | String | 必填 | 0确认，1取消 |
+
+
+## 响应参数
+
+import commonResponse from '/snippets/common_response.mdx';
+
+<commonResponse />
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+  "card_no": "26641088522630000018110",
+  "txn_id": "3DS202608211400001",
+  "status": "0"
+}
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": {}
+}
+```
+</CodeGroup>

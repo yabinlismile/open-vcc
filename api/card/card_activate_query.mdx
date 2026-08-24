@@ -1,0 +1,44 @@
+---
+title: "卡激活查询"
+sidebarTitle: "卡激活查询"
+description: "查询卡状态是否已激活"
+---
+
+```
+POST https://{baseUrl}/api/v1/bank/account-status
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card\_no | String | 必填 | 银行卡ID |
+
+
+## 响应参数
+
+| Parameter | Type   | Description  |
+|-----------|--------|---------------|
+| code      | int    | 错误码。`0`：正常，非`0`：异常|
+| msg       | String | 成功为 `SUCCESS`，失败为错误描述|
+| result    | Object | 返回信息：true表示已激活 |
+
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+    "card_no": "26641088522630000018110"
+}
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "string",
+  "result": true
+}
+```
+</CodeGroup>

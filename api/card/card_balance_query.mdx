@@ -1,0 +1,54 @@
+---
+title: "卡余额查询"
+sidebarTitle: "卡余额查询"
+description: "查看用户卡余额"
+---
+
+```
+POST https://{baseUrl}/api/v1/bank/balance
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card\_no | String | 必填 | 银行卡ID |
+| card\_currency | String | 选填 | 卡币种，双币种卡才需要填写 |
+
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| card\_number | String | 真实银行卡号 |
+| card\_type | String | 银行卡类型 |
+| current\_balance | String | 当前余额（卡支持的货币） |
+| current\_balance\_usd | String | 当前余额（USD） |
+| available\_balance | String | 可用余额（卡支持的货币） |
+| available\_balance\_usd | String | 可用余额（USD） |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+    "card_no": "26641088522630000018110"
+}
+```
+
+```json Response
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "card_number": "438521****2001",
+        "card_type": "EGEN BLUE",
+        "current_balance": "121.12454",
+        "current_balance_usd": "121.12454",
+        "available_balance": "10.23",
+        "available_balance_usd": "10.23"
+    }
+}
+```
+</CodeGroup>

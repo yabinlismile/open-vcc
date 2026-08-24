@@ -1,0 +1,69 @@
+---
+title: "信用卡授信记录查询"
+sidebarTitle: "信用卡授信记录查询"
+description: "查询信用卡授信额度记录"
+---
+
+```
+GET https://{baseUrl}/api/v1/credit/getCardLimitTxn
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card\_no | String | 必填 | 银行卡ID |
+| cust\_tx\_id | String | 选填 | 机构交易流水id |
+| tx\_id | String | 选填 | 平台交易流水id |
+| page\_num | int | 选填 | 页数，默认第1页 |
+| page\_size | int | 选填 | 页的大小，默认20条 |
+| former\_time | long | 选填 | 前置时间：UNIX 时间戳，`秒为单位` |
+| latter\_time | long | 选填 | 后置时间：UNIX 时间戳，`秒为单位` |
+| time\_sort | String | 选填 | 时间排序：asc为正序，desc为反序，默认desc |
+
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| tx\_id | String | Bycard 交易流水id |
+| cust\_tx\_id | String | 机构交易流水id |
+| card\_no | String | 银行卡ID |
+| amount_limit | String | 当前限额 |
+| old_amount_limit | String | 旧限额 |
+| status | String | 交易状态。 "0" 处理中，"1" 是成功，"2" 是失败 |
+| amount_modify | String | 变化的金额 |
+| available\_amount | String | 可用金额 |
+| old\_available\_amount | String | 旧的可用金额 |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": {
+    "total": 1,
+    "records": [
+      {
+        "tx_id":"2022062410453502002436064",
+        "cust_tx_id":"df6c7d60-b34c-4f7a-bdab-b9ed6560f748",
+        "card_no":"4355469889900027728",
+        "amount_limit": "8000", // 当前限额
+        "old_amount_limit":"10000", // 旧限额
+        "status": "1", // "0" 处理中，"1" 是成功，"2" 是失败
+        "amount_modify": "2000", // 变化的金额
+        "available_amount": "2000",    
+        "old_available_amount": "4000"
+      }
+    ]
+  }
+}
+```
+</CodeGroup>

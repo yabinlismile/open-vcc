@@ -1,0 +1,46 @@
+---
+title: "活体认证"
+sidebarTitle: "活体认证"
+description: "获取用户活体认证链接"
+---
+
+```
+GET https://{baseUrl}/api/v1/customers/accounts/url
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| acct\_no | String | 必填 | 机构用户的唯一id号 |
+| card_type_id | String | 选填 | 卡种类型ID（与bank_id二选一） |
+| bank_id | String | 选填 | 银行ID（与card_type_id二选一） |
+
+
+## 响应参数
+
+
+| Parameter | Type   | Description  |
+|-----------|--------|---------------|
+| face_recognition_url      | String    | 活体认证链接：https://xxx  |
+| expiration_time       | String |  过期时间（分钟） |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+
+```
+
+```json Response
+ {
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": {
+    "face_recognition_url": "https://xxx",  //活体认证链接
+    "expiration_time": "10"  //过期时间（分钟）
+  }
+}
+```
+</CodeGroup>

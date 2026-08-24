@@ -1,0 +1,45 @@
+---
+title: "机构余额查询"
+sidebarTitle: "机构余额查询"
+description: "查询机构币种余额"
+---
+
+```
+GET https://{baseUrl}/api/v1/institution/balance
+```
+
+## 请求参数
+无
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| coin\_type | String | 数字货币类型 |
+| addresses\[0\].balance | String | 数字货币余额 |
+| addresses\[0\].address\_type | String | 数字货币地址类型，开卡（open\_card）和充值（deposit） |
+| addresses\[0\].address | String | 数字货币地址 |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+无
+```
+
+```json Response
+{
+	"code": 0,
+	"msg": "SUCCESS",
+	"result": [{
+		"addresses": [{
+			"balance": "99949.985",
+			"address_type": "deposit",
+			"address": "0x152ed7e505ef5d1df4e56ecae3fb90d1fbdef70e"
+		}],
+		"coin_type": "USDT-TRC20"
+	}]
+}
+```
+</CodeGroup>

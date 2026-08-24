@@ -1,0 +1,43 @@
+---
+title: "卡解冻"
+sidebarTitle: "卡解冻"
+description: "解冻卡"
+---
+
+```
+POST https://{baseUrl}/api/v1/bank/unfreeze
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card\_no | String | 必填 | 银行卡ID |
+
+
+## 响应参数
+
+import commonResponse from '/snippets/common_response.mdx';
+
+<commonResponse />
+
+<Note>
+特殊卡种会出现  (110021, "The card status is processing") 表示正在处理中，后续终态会通过回调通知，之后可以通过查询卡状态接口来确认。
+</Note>
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+    "card_no":"26641088522630000018110"
+}
+```
+
+```json Response
+{
+	"code": 0,
+	"msg": "SUCCESS"
+}
+```
+</CodeGroup>

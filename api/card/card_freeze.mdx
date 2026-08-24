@@ -1,0 +1,40 @@
+---
+title: "卡冻结"
+sidebarTitle: "卡冻结"
+description: "冻结卡"
+---
+
+```
+POST https://{baseUrl}/api/v1/bank/freeze
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card\_no | String | 必填 | 银行卡ID |
+
+
+## 响应参数
+
+import commonResponse from '/snippets/common_response.mdx';
+
+<commonResponse />
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+    "card_no": "26641088522630000018110"
+}
+```
+
+```json Response
+{
+	"code": 0,
+	"msg": "SUCCESS"
+}
+```
+</CodeGroup>

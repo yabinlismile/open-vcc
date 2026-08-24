@@ -1,0 +1,78 @@
+---
+title: "储蓄卡充值分页查询"
+sidebarTitle: "储蓄卡充值分页查询"
+description: "查询储蓄卡充值分页列表（可查询一定范围内的记录）"
+---
+
+```
+GET https://{baseUrl}/api/v1/deposit-transactions
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| acct\_no | String | 选填 | 机构端用户编号(机构端唯一) |
+| page\_num | int | 选填 | 页数，默认第1页 |
+| page\_size | int | 选填 | 页的大小，默认20条 |
+| former\_time | long | 选填 | 前置时间：UNIX 时间戳，`秒为单位` |
+| latter\_time | long | 选填 | 后置时间：UNIX 时间戳，`秒为单位` |
+| time\_sort | String | 选填 | 时间排序：asc为正序，desc为反序，默认desc |
+
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| cust\_tx\_id | String | 机构流水号 |
+| acct\_no | String | 机构端用户编号(机构端唯一) |
+| card\_no | int | 银行卡ID |
+| cust\_tx\_time | long | 创建时间 |
+| tx\_id | String | 交易id |
+| coin\_type | int | 充值币种 |
+| tx\_amount | String | 充值金额 |
+| exchange\_fee | String | 充值币种兑换成USDT的费用，单位是 `coin_type` |
+| loading\_fee | String | 充值手续费，单位是 `coin_type` |
+| currency\_type | String | 到账法币类型 |
+| currency\_amount | String | 到账法币数量 |
+| exchange\_rate | String | USDT/法币汇率 |
+| fiat\_exchange\_rate | String | 卡支持的法币/USD汇率 |
+| tx\_status | int | 交易状态：详见 [充值状态](/api/reference/enum_trans_status#充值状态) |
+| coin\_price | String | coin\_type/USD汇率 |
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+
+```
+
+```json Response
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "total": 1,
+        "records": [
+            {
+                "cust_tx_id": "1223",
+                "acct_no": "03030062",
+                "card_no": "8993152800000013334",
+                "cust_tx_time": 1584350913000,
+                "tx_id": "2020031609283339501898843",
+                "coin_type": "USDT",
+                "tx_amount": "61.86",    
+                "exchange_fee": "0",
+                "loading_fee": "1.8558",
+                "currency_type": "USD",                
+                "currency_amount": "60",
+                "exchange_rate": "1.00239251357",
+                "fiat_exchange_rate": "1",
+                "tx_status": 3,
+                "coin_price": "1"
+            }
+        ]
+    }
+}
+```
+</CodeGroup>

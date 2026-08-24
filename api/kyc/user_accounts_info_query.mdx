@@ -1,0 +1,90 @@
+---
+title: "用户信息查询"
+sidebarTitle: "用户信息查询"
+description: "查询机构号下唯一用户kyc信息"
+---
+
+```
+GET https://{baseUrl}/api/v1/customers/accounts/kyc
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| acct\_no | String | 必填 | 机构下用户账号 |
+| bank\_id | String | 选填 | 机构下用户账号+银行种类对应的id 唯一 |
+
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| acct\_no | String | 机构端用户编号(机构端唯一)，字符长度最大64位 |
+| acct\_name | String | 机构端用户名，字符长度最大64位 |
+| first\_name | String | 真实用户名，字符长度最大50位 |
+| last\_name | String | 真实用户姓，字符长度最大50位 |
+| gender | String | male:男，female:女，unknown:其他，字符长度最大6位 |
+| birthday | String | 生日（生日格式为"1990-01-01"） |
+| city | String | 城市，字符长度最大100位 |
+| state | String | 省份，字符长度最大100位 |
+| country | String | 用户所在国家，字符长度最大50位 |
+| nationality | String | 国籍，字符长度最大255位 |
+| doc\_no | String | 证件号码，字符长度最大128位 |
+| doc\_type | String | 证件类型(目前只支持passport): passport: 护照，idcard：身份证，字符长度最大8位 |
+| country\_code | String | 手机国际区号，如“+86”。字符长度最大5位 |
+| mobile | String | 手机号，字符长度最大32位 |
+| mail | String | 邮箱，不支持163.com的邮箱。字符长度最大64位 |
+| address | String | 通讯地址，银行卡会寄到该地址。字符长度最大256位 |
+| zipcode | String | 邮编，字符长度最大20位 |
+| maiden\_name | String | 妈妈的名字，字符长度最大255位 |
+| card\_type\_id | String | 银行卡种类对应的id,比如 10010001 |
+| kyc\_info | text | KYC 其他信息 |
+| cust\_tx\_id | String | KYC流水号 |
+| status | int | 状态码: 0 已提交， 1 认证通过(开卡成功)， 2 认证未通过， 3 认证中， 4 提交信息处理中 5 已退款 6 需要活体认证 |
+| reason | String | 状态描述 |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+acct_no=tevau_uat_008
+```
+
+```json Response
+{
+	"code": 0,
+	"msg": "SUCCESS",
+	"result": {
+		"total": 1,
+		"records": [{
+			"acct_no": "tevau_uat_008",
+			"acct_name": "tevau_uat_008_test",
+			"first_name": "san feng",
+			"last_name": "zhang",
+			"gender": "male",
+			"birthday": "1990-01-01",
+			"city": "moon",
+			"state": "moon",
+			"country": "HK",
+			"nationality": "HK",
+			"doc_no": "6900009008",
+			"doc_type": "passport",
+			"country_code": "122",
+			"mobile": "13645321888",
+			"mail": "tevau_uat_008@test.com",
+			"address": "street 1",
+			"zipcode": "123456",
+			"maiden_name": "mom",
+			"card_type_id": null,
+			"kyc_info": null,
+			"card_no": null,
+			"status": 1,
+			"cust_tx_id": null,
+			"reason": "SUCCESS"
+		}]
+	}
+}
+```
+</CodeGroup>

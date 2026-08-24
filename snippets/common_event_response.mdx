@@ -1,0 +1,15 @@
+
+| Parameter | Type   | Description  |
+|-----------|--------|---------------|
+| code      | int    | 0: success, other: failure |
+| msg       | String | 错误码描述 |
+
+<Note>
+机构接受推送后，响应的数据结构如下，如果机构返回正确数据结构，我们将不再推送该事件
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS"
+}
+```
+</Note>

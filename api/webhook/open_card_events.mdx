@@ -1,0 +1,57 @@
+---
+title: "开卡通知"
+sidebarTitle: "开卡通知"
+description: "银行卡已制作完成，请申请银行卡"
+---
+
+
+## 请求参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| action | String | card-application-ready |
+| events\[n\].params.acct\_no | String | 机构下用户唯一ID |
+| events\[n\].params.card\_type\_id | String | 卡类型 |
+| events\[n\].params.card\_no | String | 卡ID |
+| events\[n\].params.status | int | 开卡状态：2. 待激活, 4. 开卡失败 |
+| events\[n\].params.reason | String | 开卡失败原因 （如果status为 2 则为空） |
+| events\[n\].params.cust_tx_id | String | 机构的开卡流水号 |
+
+
+## 响应参数
+
+import commonEventResponse from '/snippets/common_event_response.mdx'
+
+<commonEventResponse />
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+  "action": "card-application-ready",
+  "events": [
+    {
+      "create_time": 1751967541000,
+      "id": "feb555e7926149ad988903a0496ef827",
+      "params": {
+        "card_type_id": "32000001",
+        "reason": "FAILED_Flagged On Sentro",
+        "acct_no": "202507080001",
+        "card_no": "431557932000001****",
+        "status": 4,
+        "cust_tx_id": "20260323000000001"
+      }
+    }
+  ]
+}
+```
+
+```json Response
+{
+    "code": 0,
+    "msg": "SUCCESS"
+}
+```
+</CodeGroup>

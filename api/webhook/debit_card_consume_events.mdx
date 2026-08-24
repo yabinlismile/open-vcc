@@ -1,0 +1,89 @@
+---
+title: "储蓄卡消费通知"
+sidebarTitle: "储蓄卡消费通知"
+description: ""
+---
+
+
+## 请求参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| action | String | depositcard-balance-updated |
+| events\[n\].params.card_no | String | 卡ID |
+| events\[n\].params.credit | String | 存入金额(卡支持的货币) |
+| events\[n\].params.credit_usd | String | 存入金额(USD) |
+| events\[n\].params.credit_usdt | String | 存入金额(USDT) |
+| events\[n\].params.debit | String | 消费金额(卡支持的货币) |
+| events\[n\].params.debit_usd | String | 消费金额(USD) |
+| events\[n\].params.debit_usdt | String | 消费金额(USDT) |
+| events\[n\].params.description | String | 描述 |
+| events\[n\].params.fee | String | 手续费，只有部分卡有 |
+| events\[n\].params.fxFee | String | 换汇手续费，涉及换汇会有 |
+| events\[n\].params.authFee | String | 授权手续费，只有部分卡有 |
+| events\[n\].params.origin_transaction_id | String | 原交易id |
+| events\[n\].params.posting_date | String | 交易提交日期 |
+| events\[n\].params.reason | String | 交易失败原因 |
+| events\[n\].params.transaction_date | String | 交易日期 |
+| events\[n\].params.transaction_time | Date | 交易时间戳 |
+| events\[n\].params.tx_amount | String | 实际交易货币的交易金额 |
+| events\[n\].params.tx_currency | String | 实际交易货币 |
+| events\[n\].params.end_bal | String | 交易后余额。如果是0 代表没交易后余额 |
+| events\[n\].params.tx_id | String | 交易ID |
+| events\[n\].params.type | int | 交易类型，详见[卡交易类型](/api/reference/enum_card_txn_type#卡交易类型) |
+| events\[n\].params.merchant_country | String | 商户国家 |
+| events\[n\].params.merchant_name | String | 商户名称 |
+| events\[n\].params.merchant_mcc | String | 商户mcc码 |
+
+
+## 响应参数
+
+import commonEventResponse from '/snippets/common_event_response.mdx'
+
+<commonEventResponse />
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+  "action": "depositcard-balance-updated",
+  "events": [
+    {
+      "create_time": 1751967541000,
+      "id": "feb555e7926149ad988903a0496ef827",
+      "params": {
+        "card_no": "23658351800000095083",
+        "credit": "486.00",
+        "credit_usd": "486.00",
+        "credit_usdt": "486.00",
+        "debit": "0",
+        "debit_usd": "0",
+        "debit_usdt": "0",
+        "description": "ByCard, Input",
+        "fee": "",
+		"fxFee": "0",
+		"authFee": "0",
+        "origin_transaction_id": "",
+        "posting_date": "23/05/2025",
+        "reason": "",
+        "transaction_date": "23/05/2025",
+        "transaction_time": 1747998287000,
+        "tx_amount": "486.00",
+        "tx_currency": "USD",
+        "tx_id": "056IBPL251430061",
+        "type": 2
+      }
+    }
+  ]
+}
+```
+
+```json Response
+{
+    "code": 0,
+    "msg": "SUCCESS"
+}
+```
+</CodeGroup>

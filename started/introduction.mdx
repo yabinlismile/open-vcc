@@ -1,0 +1,35 @@
+---
+title: "ByCard API"
+sidebarTitle: "文档介绍"
+description: "欢迎使用 ByCard API 文档。本文档是针对 ByCard ToB 的卡业务，目前支持实体卡、虚拟卡、共享卡等卡种类（不同卡BIN），不同卡种支持的法币和手续费不同，接口调用参数也略有差别."
+---
+
+
+# API 使用步骤
+
+    1. 请在 https://customer.bycard.io 注册机构账户，如果访问不了请提供你的IP地址。
+    2. Bycard审核通过后，机构才可以登录成功。
+    3. 机构登录，查看钱包地址，给钱包充值，支持 USDT、BTC、ETH 等。
+    4. 机构登录，创建 Appkey 和 secret，并添加ip白名单地址 最多可以加10个 中间以[,]分割 可选择配置 webhook 回调地址。
+    5. 调用 API 进行 KYC、开卡、激活卡、充值等操作，状态变更 ByCard 会通过回调地址通知机构服务器。
+
+<Note>
+建议使用生产环境前先在测试环境调试。
+</Note>
+
+
+# 访问地址
+
+```
+机构 Dashboard：
+
+    测试环境（有IP白名单限制）: https://customer-sandbox.bycard.io
+
+    生产环境（有IP白名单限制）: https://customer.bycard.io
+
+API 域名：
+
+    测试环境: https://api-sandbox.bycard.io
+
+    生产环境: https://api.bycard.io
+```

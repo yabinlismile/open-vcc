@@ -1,0 +1,47 @@
+---
+title: "更新邮箱和手机号"
+sidebarTitle: "更新邮箱和手机号"
+description: "用户卡对应的邮箱和手机号更新"
+---
+
+```
+PUT https://{baseUrl}/api/v1/customers/accounts/updateEmailMobile
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card\_no | String | 必填 | 卡号 |
+| mail | String | 选填 | 邮箱，与手机号不能都为空 |
+| country\_code | String | 选填 | 手机号区号（手机号非空时，必填） |
+| mobile | String | 选填 | 手机号，与手机号不能都为空 |
+
+
+## 响应参数
+
+import commonResponse from '/snippets/common_response.mdx';
+
+<commonResponse />
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+  "card_no": "user000000001",
+  "mail": "test@example.com",
+  "country_code": "+86",
+  "mobile": "13800138000"
+}
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": true
+}
+```
+</CodeGroup>

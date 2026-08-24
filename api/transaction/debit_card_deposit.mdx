@@ -1,0 +1,86 @@
+---
+title: "储蓄卡充值"
+sidebarTitle: "储蓄卡充值"
+description: "给用户开通的卡进行充值"
+---
+
+```
+内扣：POST https://{baseUrl}/api/v1/deposit-transactions
+
+外扣：POST https://{baseUrl}/api/v1/deposit-transactions/external-deduction
+```
+
+<Note>
+内扣 url：/api/v1/deposit-transactions (例如充值手续 1% 充值金额100 USD 调用此接口最终结果为 备付金扣除100 USDT 持卡人卡到账99 USD )
+
+外扣 url：/api/v1/deposit-transactions/external-deduction (例如充值手续 1% 充值金额100 USD 调用此接口最终结果为 备付金扣除101 USDT 持卡人卡到账100 USD)
+</Note>
+
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card\_no | String | 必填 | 银行卡ID |
+| acct\_no | String | 必填 | 机构端用户编号(机构端唯一) |
+| amount | String | 必填 | 充值对应币种的金额 最多可以有10位数字 小数部分最多可以有2位数字(单笔最大金额为1W 如需调整请联系)|
+| coin\_type | String | 必填 | 币种。只支持USDT、RUSD |
+| cust\_tx\_id | String | 必填 | 机构的交易流水号 |
+| remark | String | 选填 | 交易备注 |
+| card\_currency | String | 选填 | 卡币种，双币种卡才需要填写 |
+
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| tx\_id | String | bycard 交易流水id |
+| coin\_type | String | 充值币种 |
+| tx\_amount | String | 充值币种对应的金额 |
+| deposit\_usdt | String | 扣除手续费后,为用户充值的coin\_type数量，单位是coin\_type |
+| exchange\_fee\_rate | String | 充值币种兑换成coin\_type的费率 |
+| exchange\_fee | String | 充值币种兑换成USDT的费用，单位是coin\_type |
+| loading\_fee | String | 充值手续费，单位是coin\_type |
+| currency\_amount | String | 到账法币数量 |
+| currency\_type | String | 到账法币类型 |
+| exchange\_rate | String | coin\_type/USD汇率 |
+| fiat\_exchange\_rate | String | 卡支持的法币/USD汇率 |
+
+<Note>
+如果coin_type是USDT，从机构扣的USDT费用 = exchange_fee + loading_fee + deposit_usdt。
+</Note>
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+	"acct_no": "tevau_uat_001",
+	"amount": "0.92",
+	"card_no": "26614057422630000012874",
+	"coin_type": "USDT",
+	"cust_tx_id": "IN31e12f11f50c4bb49dc9f1b60eec9328",
+	"remark": "充值-走外扣手续费"
+}
+```
+
+```json Response
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "tx_id": "2020022511324811001637548",
+        "coin_type": "USDT",
+        "tx_amount": "0.92",
+        "exchange_fee_rate": "0",
+        "exchange_fee": "0",
+        "loading_fee": "0.0812",
+        "deposit_usdt": "0.9188",
+        "currency_type": "USD",
+        "currency_amount": "0.92",
+        "exchange_rate": "1.00239251357",
+        "fiat_exchange_rate": "1"
+    }
+}
+```
+</CodeGroup>

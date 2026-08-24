@@ -1,0 +1,55 @@
+---
+title: "账单地址更新"
+sidebarTitle: "账单地址更新"
+description: "用于用户账单地址更新"
+---
+
+```
+PUT https://{baseUrl}/api/v1/customers/accounts/address
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| acct\_no | String | 必填 | 机构用户的唯一id号 |
+| mobile | String | 必填 | 手机号，字符长度最大32 |
+| country\_code | String | 必填 | 手机国际区号，如“+86”。字符长度最大5 |
+| country | String | 必填 | 用户所在国家两位国家码，字符长度最大50 |
+| state | String | 必填 | 省份，如果是美国填两位州码，字符长度最大100 |
+| city | String | 必填 | 城市，字符长度最大100 |
+| address | String | 必填 | 通讯地址，银行卡会寄到该地址。字符长度最大256 |
+| zipcode | String | 必填 | 邮编，字符长度最大20 |
+
+
+## 响应参数
+
+import commonResponse from '/snippets/common_response.mdx';
+
+<commonResponse />
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+  "acct_no": "user000000001",
+  "mobile": "13800138000",
+  "country_code": "+86",
+  "country": "CN",
+  "state": "Shanghai",
+  "city": "Shanghai",
+  "address": "XX区XX路XX号XX大厦",
+  "zipcode": "200000"
+}
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": true
+}
+```
+</CodeGroup>

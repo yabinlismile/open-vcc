@@ -1,0 +1,45 @@
+---
+title: "用户信息更新"
+sidebarTitle: "用户信息更新"
+description: ""
+---
+
+```
+PUT https://{baseUrl}/api/v1/customers/accounts
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| acct\_no | String | 必填 | 机构用户的唯一id号 |
+| kyc\_info | String | 必填 | kyc\_info |
+
+
+## 响应参数
+
+import commonResponse from '/snippets/common_response.mdx';
+
+<commonResponse />
+
+
+## 交易报文
+
+
+<CodeGroup>
+```json Request
+{
+  "acct_no": "string，机构用户的唯一id号，必填",
+  "kyc_info": "string，kyc信息，必填"
+}
+
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": true
+}
+```
+</CodeGroup>

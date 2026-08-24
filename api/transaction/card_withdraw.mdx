@@ -1,0 +1,59 @@
+---
+title: "卡提现"
+sidebarTitle: "卡提现"
+description: "目前只有部分卡支持，使用前请询问"
+---
+
+```
+POST https://{baseUrl}/api/v1/deposit-transactions/withdraw
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card\_no | String | 必填 | 银行卡ID |
+| acct\_no | String | 必填 | 机构端用户编号(机构端唯一) |
+| amount | String | 必填 | 提现对应币种的金额 最多可以有10位数字 小数部分最多可以有2位数字|
+| coin\_type | String | 必填 | 币种。只支持USDT |
+| cust\_tx\_id | String | 必填 | 机构的交易流水号 |
+| remark | String | 选填 | 交易备注 |
+
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| tx\_id | String | bycard 交易流水id |
+| withdraw\_amounte | String | 提现金额 |
+| balance | String | 提现后备付金余额 |
+| before\_balance | String | 提现前备付金余额 |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+	"amount": "100",
+	"card_no": "26642315512510000013469",
+	"cust_tx_id": "OUT593704ffe5984c17863fba0744ed9fe6",
+	"coin_type": "USDT",
+	"acct_no": "bin_test02",
+	"remark": "账户提现"
+}
+```
+
+```json Response
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "tx_id": "2026081802453851406436530",
+        "withdraw_amount": "100",
+        "balance": "9963605.788845",
+        "before_balance": "9963605.688845"
+    }
+}
+```
+</CodeGroup>

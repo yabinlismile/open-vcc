@@ -1,0 +1,61 @@
+---
+title: "用户状态查询"
+sidebarTitle: "用户状态查询"
+description: "查询用户kyc状态"
+---
+
+```
+GET https://{baseUrl}/api/v1/customers/accounts
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| acct\_no | String | 选填 | 机构用户的唯一id号 |
+| page\_num | int | 选填 | 页数 |
+| page\_size | int | 选填 | 页的大小 |
+| former\_time | long | 选填 | 前置时间, UNIX 时间戳，`秒为单位` |
+| latter\_time | long | 选填 | 后置时间, UNIX 时间戳，`秒为单位` |
+| time\_sort | String | 选填 | 时间排序, asc为升序，desc为降序 |
+
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| acct\_no | String | 机构端用户编号(机构端唯一) |
+| card\_type\_id | String | 卡种类型id |
+| status | int | 状态码: 0 已提交，1 认证通过(开卡成功)，2 认证未通过，3 认证中，4 提交信息处理中，5 已退款，6 需要活体认证 |
+| face_recognition_url | string | 活体认证链接，无认证则为空 |
+| reason | String | 认证失败原因。其他情况为空字符串 |
+| create\_time | long | 创建时间 |
+
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": {
+    "total": 1,
+    "records": [{
+        "acct_no": "1222",
+        "card_type_id": "10010001",
+        "status": 6,
+        "face_recognition_url": "https://www.hh.io",
+        "reason": "{\"code\":1110032,\"msg\":\"KYC failure, photo error\"}",
+        "create_time": 1546300800000
+      }
+    ]
+  }
+}
+```
+</CodeGroup>

@@ -1,0 +1,92 @@
+---
+title: "信用卡消费通知"
+sidebarTitle: "信用卡消费通知"
+description: ""
+---
+
+
+## 请求参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| action | String | creditcard-balance-updated |
+| events\[n\].params.trace_no | String | 订单跟踪号 |
+| events\[n\].params.card_no | String | 卡ID |
+| events\[n\].params.credit | String | 存入金额(卡支持的货币) |
+| events\[n\].params.credit_usd | String | 存入金额(USD) |
+| events\[n\].params.credit_usdt | String | 存入金额(USDT) |
+| events\[n\].params.debit | String | 消费金额(卡支持的货币) |
+| events\[n\].params.debit_usd | String | 消费金额(USD) |
+| events\[n\].params.debit_usdt | String | 消费金额(USDT) |
+| events\[n\].params.description | String | 描述 |
+| events\[n\].params.fee | String | 手续费，只有部分卡有，fee=fxFee+authFee+atmFee+fixedFee |
+| events\[n\].params.fxFee | String | 换汇手续费，涉及换汇会有 |
+| events\[n\].params.authFee | String | 授权手续费，只有部分卡有 |
+| events\[n\].params.atmFee | String | ATM手续费，只有部分卡有 |
+| events\[n\].params.fixedFee | String | 固定手续费，只有部分卡有 |
+| events\[n\].params.origin_transaction_id | String | 原交易流水号（当追加授权时，返回的是首次授权订单跟踪号） |
+| events\[n\].params.posting_date | String | 交易提交日期 |
+| events\[n\].params.reason | String | 交易失败原因 |
+| events\[n\].params.transaction_date | String | 交易日期 |
+| events\[n\].params.transaction_time | Date | 交易时间戳 |
+| events\[n\].params.tx_amount | String | 实际交易货币的交易金额 |
+| events\[n\].params.tx_currency | String | 实际交易货币 |
+| events\[n\].params.end_bal | String | 交易后余额。如果是0 代表没交易后余额 |
+| events\[n\].params.tx_id | String | 交易ID |
+| events\[n\].params.type | int | 交易类型，详见[卡交易类型](/api/reference/enum_card_txn_type#卡交易类型) |
+| events\[n\].params.merchant_country | String | 商户国家 |
+| events\[n\].params.merchant_name | String | 商户名称 |
+| events\[n\].params.merchant_mcc | String | 商户mcc码 |
+
+
+## 响应参数
+
+import commonEventResponse from '/snippets/common_event_response.mdx'
+
+<commonEventResponse />
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+  "action": "creditcard-balance-updated",
+  "events": [
+    {
+      "create_time": 1751967541000,
+      "id": "feb555e7926149ad988903a0496ef827",
+      "params": {
+        "card_no": "23678321720000015129",
+        "credit": "0",
+        "credit_usd": "0",
+        "credit_usdt": "0",
+        "debit": "5",
+        "debit_usd": "5",
+        "debit_usdt": "5",
+        "description": "Orchard Central , ",
+        "end_bal": 590.78,
+        "fee": "0",
+		"fxFee": "0",
+		"authFee": "0",
+        "origin_transaction_id": "",
+        "posting_date": "09/07/2025",
+        "transaction_date": "09/07/2025",
+        "transaction_time": 1752062446000,
+        "tx_amount": "5",
+        "tx_currency": "USD",
+        "tx_id": "2beea362-1713-4854-a9a2-8e6f200e9217",
+        "type": 1
+      }
+    }
+  ]
+}
+```
+
+```json Response
+{
+    "code": 0,
+    "msg": "SUCCESS"
+}
+```
+</CodeGroup>

@@ -1,0 +1,56 @@
+---
+title: "信用卡授信额度"
+sidebarTitle: "信用卡授信额度"
+description: "给信用卡提升使用额度"
+---
+
+```
+POST https://{baseUrl}/api/v1/credit/modify/cardlimit
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card\_no | String | 必填 | 银行卡ID |
+| cust\_tx\_id | String | 必填 | 客户唯一交易ID |
+| amount\_limit | String | 必填 | 交易金额，单位是usd |
+
+<Note>
+amount_limit：要增加卡余额，则使用正数；要减少卡余额，则使用负数；
+</Note>
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| tx_id | String  | 交易流水号-平台返回的 |
+| amount_limit | String | 交易金额，单位是usd |
+| available_amount | String  | 可用金额 |
+| old_available_amount | String | 修改前可用金额 |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+	"card_no": "26641088522630000018110",
+	"cust_tx_id": "b1e9a85eab2d43e787cc677eec211bb3",
+	"amount_limit": 10
+}
+```
+
+```json Response
+{
+	"code": 0,
+	"msg": "SUCCESS",
+	"result": {
+		"tx_id": "20260820083222361882663105",
+		"amount_limit": "10",
+		"available_amount": "14826.27",
+		"old_available_amount": "14816.27"
+	}
+}
+```
+</CodeGroup>

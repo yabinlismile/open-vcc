@@ -1,0 +1,46 @@
+---
+title: "信用卡授信额度查询"
+sidebarTitle: "信用卡授信额度查询"
+description: "查询用户的信用卡授信额度"
+---
+
+```
+GET https://{baseUrl}/api/v1/credit/user/detail
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| acct\_no | String | 必填 | 机构用户的唯一id号 |
+| card\_no | String | 必填 | 银行卡ID |
+
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| amount\_limit | String | 授信额度 |
+| available\_amount | String | 可用金额 |
+| pre\_authorize\_amount | String | 预授权金额 |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": {
+    "amount_limit": "10000",
+    "available_amount": "1900",
+    "pre_authorize_amount": "100"
+  }
+}
+```
+</CodeGroup>

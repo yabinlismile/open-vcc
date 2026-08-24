@@ -1,72 +1,126 @@
 {
   "$schema": "https://mintlify.com/docs.json",
+  "name": "bycard",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
-  },
-  "favicon": "/favicon.svg",
-  "navigation": {
-    "pages": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    "primary": "#1A6BF0",
+    "light": "#E8F0FE",
+    "dark": "#0D3F9C"
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/bycard.png",
+    "dark": "/logo/bycard.png"
   },
+  "favicon": "/favicon.svg",
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "href": "http://47.237.176.51:8101"
     }
   },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "快速开始",
+            "pages": [
+              "started/introduction",
+              "started/interface",
+              "started/authentication"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "KYC",
+            "pages": [
+              "api/kyc/user_accounts_add",
+              "api/kyc/liveness_verify_link",
+              "api/kyc/user_accounts_status_query",
+              "api/kyc/user_accounts_info_query",
+              "api/kyc/user_accounts_update",
+              "api/kyc/user_accounts_address_update",
+              "api/kyc/user_accounts_email_phone_update"
+            ]
+          },
+          {
+            "group": "卡片",
+            "pages": [
+              "api/card/card_apply",
+              "api/card/card_activate",
+              "api/card/card_status_query",
+              "api/card/card_activate_query",
+              "api/card/card_balance_query",
+              "api/card/card_bill_query",
+              "api/card/card_sensitive_query",
+              "api/card/card_freeze",
+              "api/card/card_unfreeze",
+              "api/card/card_cancel"
+            ]
+          },
+          {
+            "group": "交易",
+            "pages": [
+              "api/transaction/debit_card_deposit",
+              "api/transaction/debit_card_deposit_query",
+              "api/transaction/debit_card_deposit_page_query",
+              "api/transaction/credit_card_balance_modify",
+              "api/transaction/credit_card_balance_modify_query",
+              "api/transaction/credit_card_balance_query",
+              "api/transaction/credit_card_limit_modify",
+              "api/transaction/credit_card_limit_query",
+              "api/transaction/card_withdraw",
+              "api/transaction/card_3ds_auth_confirm",
+              "api/transaction/card_transaction_query"
+            ]
+          },
+          {
+            "group": "机构交互",
+            "pages": [
+              "api/institution/balance_query",
+              "api/institution/plat_public_key",
+              "api/institution/plat_public_key_upload"
+            ]
+          },
+          {
+            "group": "回调通知",
+            "pages": [
+              "api/webhook/kyc_events",
+              "api/webhook/open_card_events",
+              "api/webhook/card_activate_events",
+              "api/webhook/card_deposit_events",
+              "api/webhook/credit_card_consume_events",
+              "api/webhook/debit_card_consume_events",
+              "api/webhook/card_3ds_opt_events",
+              "api/webhook/card_3ds_auth_confirm_events",
+              "api/webhook/app_bind_events",
+              "api/webhook/app_bind_fail_events",
+              "api/webhook/card_status_events",
+              "api/webhook/auth_fee_deduction_events",
+              "api/webhook/provision_deposit_events",
+              "api/webhook/card_transaction_confirm_events"
+            ]
+          },
+          {
+            "group": "引用数据",
+            "pages": [
+              "api/reference/enum_card_status",
+              "api/reference/enum_trans_status",
+              "api/reference/enum_card_txn_type",
+              "api/reference/enum_error_code"
+            ]
+          }
+        ]
+      }
     ]
   },
   "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+    "socials": {}
   }
 }

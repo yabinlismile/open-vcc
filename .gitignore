@@ -1,0 +1,17 @@
+.idea
+.idea/
+.DS_Store
+node_modules/
+.project
+build
+build/*
+build.tar
+cache
+cache/*
+dist
+dist/*
+src/config/*.tmp
+src/config/env.js
+/index.html
+/index_prod.html
+.vscode/settings.json

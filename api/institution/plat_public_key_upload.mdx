@@ -1,0 +1,43 @@
+---
+title: "平台公钥上传"
+sidebarTitle: "平台公钥上传"
+description: "上传平台公钥."
+---
+
+```
+POST https://{baseUrl}/api/v1/institution/publickey
+```
+
+## 请求参数
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| public\_key | String | 必填 | public key |
+
+
+## 响应参数
+
+| Parameter | Type   | Description  |
+|-----------|--------|---------------|
+| code      | int    | 错误码。`0`：正常，非`0`：异常|
+| msg       | String | 成功为 `SUCCESS`，失败为错误描述|
+| result    | Object | 返回信息：true表示成功 |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+	"public_key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2i40qDIar1T5A22OK+/Up1SR1fTmkW9o+eWf5OKgryeY/OPEgAZKjeyxuadp4c8wFYrfztb1XCZXROakuuchmxWUf4b62ZV71mPuOAfp2sHfCwiYUOeVr2Q74gPSqLW+x0hk/OJAfTxZNsM4BXIickE8XKLWP+0pegNsd0BSl/QIDAQAB"
+}
+```
+
+```json Response
+{
+	"code": 0,
+	"msg": "SUCCESS",
+	"result": true
+}
+```
+</CodeGroup>

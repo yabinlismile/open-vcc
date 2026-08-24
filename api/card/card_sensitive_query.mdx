@@ -1,0 +1,87 @@
+---
+title: "卡敏感信息查询"
+sidebarTitle: "卡敏感信息查询"
+description: "查询卡敏感信息"
+---
+
+```
+虚拟卡：POST https://{baseUrl}/api/v1/bank/virtualcard
+
+实体卡：POST https://{baseUrl}/api/v1/bank/card
+```
+
+## 请求参数
+
+| Parameter | Type | Whether Required | Description |
+| --- | --- | --- | --- |
+| card\_no | String | Required | card no |
+| publickey | String | Optional | 我们会使用这个公钥替代 默认的公钥（需要自己调用接口上传）加密数据，支持ECIES和RSA |
+
+
+## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| encrypt\_data | String\[\] | 敏感密文信息：敏感信息加密后的数据 |
+| public\_key | String | 公钥 |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+{
+	"card_no": "26642315512510000013469",
+	"publickey": "0266b2561ed2fefeccac4cea7d6c7dfbb06ad76cd589c47b459ce3aa025d6cdac6"
+}
+```
+
+```json Response ECIES
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "encrypt_data": [
+            "f48ef2667c8e2d1f80c1e44408099fe7",
+            "048ce3a29ac8586e8e7291983ba6ea192d0144c2dec5db147fb9d74ebfc635642bd2051c2932c059e271aab3109c507b92cc2275e4ff03e2548e75a741f6531e58",
+            "78263b48508ad00b80552be97c4f74e963de0e722ded84a2c926256b74397b25030ec96f500eeb0bae9d8475c0665b35"
+        ],
+        "public_key": "031194af2b8ad8cba709509a630dfcc3746c24dfbbe9af48264df5663ad308e16f"
+    }
+}
+```
+
+```json Response RSA
+{
+	"code": 0,
+	"msg": "SUCCESS",
+	"result": {
+		"encrypt_data": [
+            "a677d1ce9bed4dd66a5212e9662e6c1e",
+            "04067bdcd0fb0df85ee3ab7a0da5900ef77937ac283475c09136090eb1ec861d48bd531e96f3f30d9596aab0d45f4d1207ca53eeda8f468d02bed80d577d864187",
+            "46f65da36fa04749859fce9eef51c248b0d20934507bf990a7326cb89ae143a8431d5625d4768a9c65bb011cf096b8c42dc8aa05a66b4e61cdf7790bd16bf3a4"
+        ],
+		"public_key": "0266b2561ed2fefeccac4cea7d6c7dfbb06ad76cd589c47b459ce3aa025d6cdac6"
+	}
+}
+```
+</CodeGroup>
+
+
+## 解密报文
+
+<CodeGroup>
+```json 实体卡解密结果
+{
+	"card_number": "123456789101212"
+}
+```
+
+```json 虚拟卡解密结果
+{
+	"cvv": "670",
+	"card_number": "5258470351223469",
+	"expire": "12/27"
+}
+```
+</CodeGroup>
