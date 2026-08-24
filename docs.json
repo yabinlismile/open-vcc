@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "bycard",
+  "name": "remCard",
   "theme": "mint",
   "colors": {
     "primary": "#1A6BF0",
@@ -8,8 +8,8 @@
     "dark": "#0D3F9C"
   },
   "logo": {
-    "light": "/logo/bycard.png",
-    "dark": "/logo/bycard.png"
+    "light": "/logo/remCard.png",
+    "dark": "/logo/remCard.png"
   },
   "favicon": "/favicon.svg",
   "navbar": {
