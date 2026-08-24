@@ -10,9 +10,9 @@ description: "当卡绑定ApplePay、GooglePay时，如果绑定失败，会发�
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | action | String | card-app-pay-otp-fail |
-| events\[n\].params.card\_no | String | 卡id |
-| events\[n\].params.reason | String | 失败原因 |
-| events\[n\].params.opt\_type | String | 应用类型，APPLE_PAY、GOOGLE_PAY，为空则默认APPLE_PAY |
+| card\_no | String | 卡id |
+| reason | String | 失败原因 |
+| opt\_type | String | 应用类型，APPLE_PAY、GOOGLE_PAY，为空则默认APPLE_PAY |
 
 
 ## 响应参数
@@ -28,15 +28,9 @@ import commonEventResponse from '/snippets/common_event_response.mdx'
 ```json Request
 {
 	"action": "card-app-pay-otp-fail",
-	"events": [{
-		"create_time": 1751967541000,
-		"id": "feb555e7926149ad988903a0496ef827",
-		"params": {
-			"card_no": "24168554500000029834",
-			"reason": "xxxxxxxxxxxxxxxxx",
-			"opt_type": "APPLE_PAY"
-		} 
-	}]
+	"card_no": "24168554500000029834",
+	"reason": "应用验证码绑定失败",
+	"opt_type": "APPLE_PAY"
 }
 ```
 

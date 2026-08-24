@@ -10,11 +10,11 @@ description: "通知KYC申请结果，由客户接收平台发送的通知请求
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | action | String | kyc-status |
-| events\[n\].params.acct\_no | String | 机构下用户唯一ID |
-| events\[n\].params.bank_id | String | 银行类型 |
-| events\[n\].params.card\_type\_id | String | 卡类型 |
-| events\[n\].params.status | int | KYC状态, 1. 成功, 2. 失败 |
-| events\[n\].params.reason | String | KYC失败原因 （如果status为 1 则为空）|
+| acct\_no | String | 机构下用户唯一ID |
+| bank_id | String | 银行类型 |
+| card\_type\_id | String | 卡类型 |
+| status | int | KYC状态：1. 成功, 2. 失败 |
+| reason | String | KYC失败原因 （如果status为 1 则为空）|
 
 
 ## 响应参数
@@ -30,19 +30,11 @@ import commonEventResponse from '/snippets/common_event_response.mdx'
 ```json Request
  {
   "action": "kyc-status",
-  "events": [
-    {
-      "create_time": 1751967541000,
-      "id": "feb555e7926149ad988903a0496ef827",
-      "params": {
-	    "card_type_id": "3200",
-        "card_type_id": "32000001",
-        "reason": "User with phone number: 86-12345612256 already exists",
-        "acct_no": "202507080001",
-        "status": 2
-      }
-    }
-  ]
+  "card_type_id": "3200",
+  "card_type_id": "32000001",
+  "reason": "User with phone number: 86-12345612256 already exists",
+  "acct_no": "202507080001",
+  "status": 2
 }
 ```
 

@@ -10,9 +10,9 @@ description: ""
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | action | String | tx-status |
-| events\[n\].params.tx\_id | String | 交易ID |
-| events\[n\].params.status | int | 卡充值状态：1.成功, 2.失败, 5.取消 |
-| events\[n\].params.reason | String | 原因（如果status为 1，5 则为空） |
+| tx\_id | String | 交易ID |
+| status | int | 卡充值状态：1.成功, 2.失败, 5.取消 |
+| reason | String | 原因（如果status为 1，5 则为空） |
 
 
 ## 响应参数
@@ -28,17 +28,9 @@ import commonEventResponse from '/snippets/common_event_response.mdx'
 ```json Request
 {
   "action": "tx-status",
-  "events": [
-    {
-      "create_time": 1751967541000,
-      "id": "feb555e7926149ad988903a0496ef827",
-      "params": {
-        "tx_id": "20250709033431062012427363",
-        "status": 1,
-        "reason": ""
-      }
-    }
-  ]
+  "tx_id": "20250709033431062012427363",
+  "status": 1,
+  "reason": ""
 }
 ```
 

@@ -10,12 +10,12 @@ description: "授权费从备付金扣除时（部分卡 具体情况咨询商�
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | action | String | auth-fee-charged |
-| events\[n\].params.card\_no | String | 银行卡ID |
-| events\[n\].params.order\_id | String | 业务单号 |
-| events\[n\].params.tx\_id | String | 关联交易单号 |
-| events\[n\].params.coin\_type | String | 扣费币种 |
-| events\[n\].params.tx\_amount | BigDecimal | 扣费金额 |
-| events\[n\].params.remark | String | 备注 |
+| card\_no | String | 银行卡ID |
+| order\_id | String | 业务单号 |
+| tx\_id | String | 关联交易单号 |
+| coin\_type | String | 扣费币种 |
+| tx\_amount | BigDecimal | 扣费金额 |
+| remark | String | 备注 |
 
 
 ## 响应参数
@@ -31,18 +31,12 @@ import commonEventResponse from '/snippets/common_event_response.mdx'
 ```json Request
 {
 	"action": "auth-fee-charged",
-	"events": [{
-		"create_time": 1751967541000,
-		"id": "feb555e7926149ad988903a0496ef827",
-		"params": {
-			"card_no": "4368113510000017536",
-			"coin_type": "USDT",
-			"order_id": "2025080705515382904439558",
-			"remark": "AUTH FEE CHARGED",
-			"tx_amount": 0.25,
-			"tx_id": "A1953333239665311745"
-		}
-	}]
+	"card_no": "4368113510000017536",
+	"coin_type": "USDT",
+	"order_id": "2025080705515382904439558",
+	"remark": "AUTH FEE CHARGED",
+	"tx_amount": 0.25,
+	"tx_id": "A1953333239665311745"
 }
 ```
 

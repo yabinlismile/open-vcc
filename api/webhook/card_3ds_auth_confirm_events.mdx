@@ -10,11 +10,11 @@ description: "当卡消费时，如果需要3ds授权确认，需要收到通知
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | action | String | card-3ds-auth |
-| events\[n\].params.txn_id | String | 订单号 |
-| events\[n\].params.card\_no | String | 卡id |
-| events\[n\].params.transaction\_currency | String | 交易货币 |
-| events\[n\].params.transaction\_amount | String | 交易金额 |
-| events\[n\].params.merchant\_name | String | 商户名 |
+| txn_id | String | 订单号 |
+| card\_no | String | 卡id |
+| transaction\_currency | String | 交易货币 |
+| transaction\_amount | String | 交易金额 |
+| merchant\_name | String | 商户名 |
 
 
 ## 响应参数
@@ -30,19 +30,11 @@ import commonEventResponse from '/snippets/common_event_response.mdx'
 ```json Request
 {
   "action": "card-3ds-auth",
-  "events": [
-    {
-      "create_time": 1751967541000,
-      "id": "feb555e7926149ad988903a0496ef827",
-      "params": {
-        "card_no": "78833000000198766",
-        "txn_id": "111234434222235",
-        "transaction_currency": "USD",
-        "transaction_amount": "100",
-        "merchant_name": "Example Merchant"
-      }
-    }
-  ]
+  "card_no": "78833000000198766",
+  "txn_id": "111234434222235",
+  "transaction_currency": "USD",
+  "transaction_amount": "100",
+  "merchant_name": "Example Merchant"
 }
 ```
 
