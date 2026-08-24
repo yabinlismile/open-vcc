@@ -45,7 +45,6 @@
               "api/kyc/user_accounts_status_query",
               "api/kyc/user_accounts_info_query",
               "api/kyc/user_accounts_update",
-              "api/kyc/user_accounts_address_update",
               "api/kyc/user_accounts_email_phone_update"
             ]
           },
