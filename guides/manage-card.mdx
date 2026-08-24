@@ -1,0 +1,120 @@
+---
+title: "Manage Card Status: Freeze, Unfreeze, and Cancel"
+sidebarTitle: "Manage Card"
+description: "Control card availability by freezing, unfreezing, or permanently cancelling a ByCard card. Learn when to use each action and what to expect."
+---
+
+You can control whether a card is available for spending by changing its status through the ByCard API. Freeze temporarily blocks transactions, unfreeze restores access, and cancel permanently closes the card. Each action is immediate for most card types, though some products may process asynchronously.
+
+## Status actions overview
+
+| Action | Endpoint | When to use |
+| --- | --- | --- |
+| **Freeze** | `POST /api/v1/bank/freeze` | Temporarily block the card when you detect suspicious activity or the user requests a pause. |
+| **Unfreeze** | `POST /api/v1/bank/unfreeze` | Restore the card after the issue is resolved or the user asks to resume spending. |
+| **Cancel** | `POST /api/v1/bank/cancel` | Permanently close the card when the user no longer needs it or it has been lost or stolen. |
+
+## Freeze a card
+
+Freezing a card prevents new authorizations while preserving the card record and balance. This is useful for fraud monitoring and user-requested pauses.
+
+Send a `POST` request to `/api/v1/bank/freeze`:
+
+| Field | Description |
+| --- | --- |
+| `card_no` | The card ID to freeze |
+
+<CodeGroup>
+
+```json Request
+{
+  "card_no": "26641088522630000018110"
+}
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "SUCCESS"
+}
+```
+
+</CodeGroup>
+
+## Unfreeze a card
+
+Unfreezing restores the card to its normal active state. Most cards reactivate immediately, but some card types may return a processing status.
+
+Send a `POST` request to `/api/v1/bank/unfreeze`:
+
+| Field | Description |
+| --- | --- |
+| `card_no` | The card ID to unfreeze |
+
+<CodeGroup>
+
+```json Request
+{
+  "card_no": "26641088522630000018110"
+}
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "SUCCESS"
+}
+```
+
+</CodeGroup>
+
+<Note>
+  For certain card products, the unfreeze response may return code `110021` with message `"The card status is processing"`. This means the request is being handled asynchronously. Wait for the [card status webhook](/api/webhook/card_status_events), then query the card status to confirm the final state.
+</Note>
+
+## Cancel a card
+
+Cancelling a card permanently closes it. After cancellation, all future transactions are rejected.
+
+<Warning>
+  Cancellation is irreversible. Once you cancel a card, it cannot be reactivated. Any remaining balance is held for 60 days, then returned to your institution reserve account.
+</Warning>
+
+Send a `POST` request to `/api/v1/bank/cancel`:
+
+| Field | Description |
+| --- | --- |
+| `card_no` | The card ID to cancel |
+
+<CodeGroup>
+
+```json Request
+{
+  "card_no": "26641088522630000018110"
+}
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": {
+    "card_type_id": "63000001",
+    "card_no": "26641088522630000018110",
+    "acct_no": "tevau_uat_008",
+    "status": 9
+  }
+}
+```
+
+</CodeGroup>
+
+<Note>
+  Cancel is only supported for certain card products. Contact ByCard support before integrating cancellation into your workflow.
+</Note>
+
+## Related topics
+
+- [Card status reference](/api/reference/enum_card_status) for the full list of card states
+- [Card status query API](/api/card/card_status_query) to check the current status before or after an action
+- [Card status webhooks](/api/webhook/card_status_events) for real-time status change notifications

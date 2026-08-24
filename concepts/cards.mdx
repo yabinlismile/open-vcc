@@ -1,0 +1,67 @@
+---
+title: "Card Types and Lifecycle in ByCard"
+sidebarTitle: "Cards"
+description: "ByCard supports debit, credit, virtual, physical, and shared cards. Learn about card statuses, card_no identifiers, and the full card lifecycle."
+---
+
+ByCard lets institutions issue several card types to serve different use cases. Each card is identified by a `card_no` value that you use in API requests, and passes through a lifecycle of statuses from application to activation, use, and eventual cancellation.
+
+## Card types
+
+ByCard supports the following card categories:
+
+| Category | Description |
+| --- | --- |
+| Debit cards | Cards funded by deposits from your institution wallet. Spending is limited to the deposited balance. |
+| Credit cards | Cards with a credit limit that you set. You can increase or decrease the available limit via API. |
+| Virtual cards | Digital-only cards with no physical counterpart. Available immediately after activation. |
+| Physical cards | Cards that are manufactured and mailed to the user. These require a shipping address and may take additional production time. |
+| Shared cards | Cards that can be shared across multiple users or use cases within your institution. |
+
+<Note>
+  Supported card currencies, BINs, and fees vary by card type. Refer to your card agreement for exact terms.
+</Note>
+
+## Card identifier
+
+ByCard assigns each card a `card_no` value. This is a platform-specific identifier, not the real card number. Use `card_no` in all API requests to avoid transmitting sensitive card data. The real card number is only returned masked (first six and last four digits) during application.
+
+## Card status codes
+
+Each card has a status that reflects its current lifecycle stage.
+
+| Code | Status | Description |
+| --- | --- | --- |
+| `0` | Frozen | The card is temporarily frozen and cannot be used. |
+| `1` | Active | The card is activated and ready for transactions. |
+| `2` | Inactive | The card has been issued but not yet activated. |
+| `3` | Activation Pending Review | The activation request is under review. |
+| `4` | Activation Review Failed | The activation request was rejected (reason provided in the webhook). |
+| `5` | Application Failed | The card application was rejected. |
+| `6` | Application Successful | The physical card application succeeded and the card is in production. |
+| `8` | Cancelling | The card is in the process of being cancelled. |
+| `9` | Cancelled | The card has been cancelled. |
+
+## Card lifecycle
+
+<Steps>
+  <Step title="Apply">
+    Submit a card application with the user's `acct_no` and the desired `card_type_id`. For physical cards, provide a shipping address.
+  </Step>
+  <Step title="Production">
+    Virtual cards move to Inactive (`2`) immediately. Physical cards move to Application Successful (`6`) while they are manufactured.
+  </Step>
+  <Step title="Activate">
+    Call the activate endpoint or wait for the user to complete activation. On success, the status becomes Active (`1`).
+  </Step>
+  <Step title="Use">
+    Perform deposits, transactions, balance queries, and status toggles through the API.
+  </Step>
+  <Step title="Manage or close">
+    Freeze, unfreeze, or cancel the card as needed. Cancelled cards move to status `9`.
+  </Step>
+</Steps>
+
+## Card currency support
+
+Each card type supports a specific fiat currency for transactions. When you deposit funds, ByCard converts your wallet assets to the card's supported currency using the current exchange rate. Dual-currency cards require you to specify the target currency during deposit.

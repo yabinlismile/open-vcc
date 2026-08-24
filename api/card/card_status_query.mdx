@@ -1,10 +1,10 @@
 ---
-title: "卡状态查询"
-sidebarTitle: "卡状态查询"
-description: "用于查询开卡申请的卡片状态"
+title: "Query Card Status"
+sidebarTitle: "Card Status"
+description: "GET /api/v1/debit-cards — query card application status by user, card, or trace ID with pagination and time range filtering."
 ---
 
-```
+```text
 GET https://{baseUrl}/api/v1/debit-cards
 ```
 
@@ -14,13 +14,12 @@ GET https://{baseUrl}/api/v1/debit-cards
 | --- | --- | --- | --- |
 | acct\_no | String | 选填 | 机构端用户编号(机构端唯一) |
 | card\_no | string | 选填 | 银行卡号 |
-| cust_tx_id | string | 选填 | 机构开卡流水号 |
+| cust\_tx\_id | string | 选填 | 机构开卡流水号 |
 | page\_num | int | 选填 | 页数，默认第1页 |
 | page\_size | int | 选填 | 页的大小，默认20条 |
 | former\_time | long | 选填 | 前置时间：UNIX 时间戳，`秒为单位` |
 | latter\_time | long | 选填 | 后置时间：UNIX 时间戳，`秒为单位` |
 | time\_sort | String | 选填 | 时间排序：asc为正序，desc为反序，默认desc |
-
 
 ## 响应参数
 
@@ -31,13 +30,13 @@ GET https://{baseUrl}/api/v1/debit-cards
 | card\_no | int | 银行卡号 |
 | status | int | 状态码，详见 [卡片状态](/api/reference/enum_card_status#卡状态) |
 | reason | String | 激活失败原因。其他情况为空字符串 |
-| cust_tx_id | String | 机构的开卡流水号 |
+| cust\_tx\_id | String | 机构的开卡流水号 |
 | create\_time | long | 创建时间 |
-
 
 ## 交易报文
 
 <CodeGroup>
+
 ```json Request
 acct_no=tevau_uat_008
 ```
@@ -81,4 +80,5 @@ acct_no=tevau_uat_008
 	}
 }
 ```
+
 </CodeGroup>

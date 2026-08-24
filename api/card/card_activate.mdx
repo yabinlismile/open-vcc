@@ -1,10 +1,10 @@
 ---
-title: "卡激活"
-sidebarTitle: "卡激活"
-description: "虚拟卡激活成功后，通过银行接口查卡信息可以拿到真实卡号、cvv、过期时间。实体卡需要卡片状态为2，开卡申请成功(未激活)的时候，才可调用激活接口。"
+title: "Activate a Card"
+sidebarTitle: "Activate"
+description: "POST /api/v1/debit-cards/status — activate a virtual or physical card. After activation, query card details to retrieve the real card number, CVV, and expiration date."
 ---
 
-```
+```text
 POST https://{baseUrl}/api/v1/debit-cards/status
 ```
 
@@ -16,7 +16,6 @@ POST https://{baseUrl}/api/v1/debit-cards/status
 | acct\_no | String | 必填 | 机构端用户编号(机构端唯一) |
 | cvv | String | 选填 | 特定实体卡激活需要cvv |
 
-
 ## 响应参数
 
 | Parameter | Type | Description |
@@ -26,10 +25,10 @@ POST https://{baseUrl}/api/v1/debit-cards/status
 | card\_no | int | 卡ID |
 | status | int | 状态码，详见 [卡片状态](/api/reference/enum_card_status#卡状态) |
 
-
 ## 交易报文
 
 <CodeGroup>
+
 ```json Request
 {
 	"acct_no": "tevau_uat_008",
@@ -49,4 +48,5 @@ POST https://{baseUrl}/api/v1/debit-cards/status
   }
 }
 ```
+
 </CodeGroup>
