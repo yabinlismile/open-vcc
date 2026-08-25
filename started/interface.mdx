@@ -30,3 +30,17 @@ description: ""
 | msg       | String | 成功为 `SUCCESS`，失败为错误描述|
 | result    | Object | 返回信息 |
 
+
+## 通知模板
+
+<Note>
+请先在机构端后台配置 Webhook 回调地址, 收到推送后验签。推送事件的数据结构如下所示
+</Note>
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| action | String | 推送类型(非空) |
+| msgId | String | 通知信息流水号(非空，用于定位具体通知) |
+| field_1 | String | 通知请求字段_1 |
+| field_* | String | 通知请求字段_* |
+| field_n | String | 通知请求字段_n |

@@ -112,6 +112,7 @@
               "api/reference/enum_card_status",
               "api/reference/enum_trans_status",
               "api/reference/enum_card_txn_type",
+              "api/reference/enum_notify_event",
               "api/reference/enum_error_code"
             ]
           }
