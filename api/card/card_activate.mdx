@@ -11,9 +11,9 @@ POST https://{baseUrl}/api/v1/card/activate
 ## 请求参数
 
 | Parameter | Type | Requirement | Description |
-| --- | --- | --- | --- |
-| card\_no | String | M | 银行卡ID |
-| acct\_no | String | M | 机构端用户编号(机构端唯一) |
+| :--- | :--- | :--- | :--- |
+| card_no | String | M | 银行卡ID |
+| acct_no | String | M | 机构端用户编号(机构端唯一) |
 | cvv | String | O | 特定实体卡激活需要cvv |
 
 
@@ -21,9 +21,9 @@ POST https://{baseUrl}/api/v1/card/activate
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| acct\_no | String | 机构端用户编号(机构端唯一) |
-| card\_type\_id | String | 卡类型ID |
-| card\_no | int | 卡ID |
+| acct_no | String | 机构端用户编号(机构端唯一) |
+| card_type_id | String | 卡类型ID |
+| card_no | int | 卡ID |
 | status | int | 状态码，详见 [卡片状态](/api/reference/enum_card_status#卡状态) |
 
 

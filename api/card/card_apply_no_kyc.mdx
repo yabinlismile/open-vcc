@@ -1,6 +1,6 @@
 ---
-title: "卡申请"
-sidebarTitle: "卡申请"
+title: "卡申请-无KYC"
+sidebarTitle: "卡申请-无KYC"
 description: "用户申请卡片"
 ---
 
@@ -14,11 +14,9 @@ POST https://{baseUrl}/api/v1/card/apply
 | Parameter | Type | Requirement | Length | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | acct_no | String | M | 64 | 机构端用户编号唯一 |
-| card_type_id | String | M | 10 | 卡种对应的id |
-| card_number | String | O | 32 | 支持绑卡的卡种才需要填写。用户自己填写卡号绑卡 |
-| active_code | String | O |  | 激活码 |
-| urn | String | O | 50 | 信封号 |
-| address | String | O |  256| 账单地址或者实体卡邮寄地址 |
+| acct_name | String | M | 64 | 机构端用户名 |
+| card_type_id | String | M | 32 | 卡种对应的id |
+| address | String | O |  256| 账单地址 |
 | country | String | O | 50 | 国家，2位编码 |
 | state | String | O | 100 | 省份 |
 | city | String | O | 100 | 城市 |

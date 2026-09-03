@@ -11,29 +11,29 @@ GET https://{baseUrl}/api/v1/deposit-transactions/{tx_id}/status
 ## 请求参数
 
 | Parameter | Type | Requirement | Description |
-| --- | --- | --- | --- |
-| tx\_id | String | M | remCard 交易流水 tx\_id 或 cust\_tx\_id |
+| :--- | :--- | :--- | :--- |
+| tx_id | String | M | remCard 交易流水 tx_id 或 cust_tx_id |
 
 
 ## 响应参数
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| cust\_tx\_id | String | 机构流水号 |
-| acct\_no | String | 机构端用户编号(机构端唯一) |
-| card\_no | int | 银行卡ID |
-| cust\_tx\_time | long | 创建时间 |
-| tx\_id | String | 交易id |
-| coin\_type | int | 充值币种 |
-| tx\_amount | String | 充值金额 |
-| exchange\_fee | String | 充值币种兑换成USDT的费用，单位是 `coin_type` |
-| loading\_fee | String | 充值手续费，单位是 `coin_type` |
-| currency\_type | String | 到账法币类型 |
-| currency\_amount | String | 到账法币数量 |
-| exchange\_rate | String | USDT/USD汇率 |
-| fiat\_exchange\_rate | String | 卡支持的法币/USD汇率 |
-| tx\_status | int | 交易状态：详见 [充值状态](/api/reference/enum_trans_status#充值状态) |
-| coin\_price | String | coin\_type/USD汇率 |
+| cust_tx_id | String | 机构流水号 |
+| acct_no | String | 机构端用户编号(机构端唯一) |
+| card_no | int | 银行卡ID |
+| cust_tx_time | long | 创建时间 |
+| tx_id | String | 交易id |
+| coin_type | int | 充值币种 |
+| tx_amount | String | 充值金额 |
+| exchange_fee | String | 充值币种兑换成USDT的费用，单位是 `coin_type` |
+| loading_fee | String | 充值手续费，单位是 `coin_type` |
+| currency_type | String | 到账法币类型 |
+| currency_amount | String | 到账法币数量 |
+| exchange_rate | String | USDT/USD汇率 |
+| fiat_exchange_rate | String | 卡支持的法币/USD汇率 |
+| tx_status | int | 交易状态：详见 [充值状态](/api/reference/enum_trans_status#充值状态) |
+| coin_price | String | coin_type/USD汇率 |
 
 
 ## 交易报文

@@ -20,31 +20,31 @@ description: "给用户开通的卡进行充值"
 ## 请求参数
 
 | Parameter | Type | Requirement | Description |
-| --- | --- | --- | --- |
-| card\_no | String | M | 银行卡ID |
-| acct\_no | String | M | 机构端用户编号(机构端唯一) |
+| :--- | :--- | :--- | :--- |
+| card_no | String | M | 银行卡ID |
+| acct_no | String | M | 机构端用户编号(机构端唯一) |
 | amount | String | M | 充值对应币种的金额 最多可以有10位数字 小数部分最多可以有2位数字(单笔最大金额为1W 如需调整请联系)|
-| coin\_type | String | M | 币种。只支持USDT、RUSD |
-| cust\_tx\_id | String | M | 机构的交易流水号 |
+| coin_type | String | M | 币种。只支持USDT、RUSD |
+| cust_tx_id | String | M | 机构的交易流水号 |
 | remark | String | O | 交易备注 |
-| card\_currency | String | O | 卡币种，双币种卡才需要填写 |
+| card_currency | String | O | 卡币种，双币种卡才需要填写 |
 
 
 ## 响应参数
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| tx\_id | String | remCard 交易流水id |
-| coin\_type | String | 充值币种 |
-| tx\_amount | String | 充值币种对应的金额 |
-| deposit\_usdt | String | 扣除手续费后,为用户充值的coin\_type数量，单位是coin\_type |
-| exchange\_fee\_rate | String | 充值币种兑换成coin\_type的费率 |
-| exchange\_fee | String | 充值币种兑换成USDT的费用，单位是coin\_type |
-| loading\_fee | String | 充值手续费，单位是coin\_type |
-| currency\_amount | String | 到账法币数量 |
-| currency\_type | String | 到账法币类型 |
-| exchange\_rate | String | coin\_type/USD汇率 |
-| fiat\_exchange\_rate | String | 卡支持的法币/USD汇率 |
+| tx_id | String | remCard 交易流水id |
+| coin_type | String | 充值币种 |
+| tx_amount | String | 充值币种对应的金额 |
+| deposit_usdt | String | 扣除手续费后,为用户充值的coin_type数量，单位是coin_type |
+| exchange_fee_rate | String | 充值币种兑换成coin_type的费率 |
+| exchange_fee | String | 充值币种兑换成USDT的费用，单位是coin_type |
+| loading_fee | String | 充值手续费，单位是coin_type |
+| currency_amount | String | 到账法币数量 |
+| currency_type | String | 到账法币类型 |
+| exchange_rate | String | coin_type/USD汇率 |
+| fiat_exchange_rate | String | 卡支持的法币/USD汇率 |
 
 <Note>
 如果coin_type是USDT，从机构扣的USDT费用 = exchange_fee + loading_fee + deposit_usdt。

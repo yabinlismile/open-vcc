@@ -11,30 +11,30 @@ GET https://{baseUrl}/api/v1/credit/getCardLimitTxn
 ## 请求参数
 
 | Parameter | Type | Requirement | Description |
-| --- | --- | --- | --- |
-| card\_no | String | M | 银行卡ID |
-| cust\_tx\_id | String | O | 机构交易流水id |
-| tx\_id | String | O | 平台交易流水id |
-| page\_num | int | O | 页数，默认第1页 |
-| page\_size | int | O | 页的大小，默认20条 |
-| former\_time | long | O | 前置时间：UNIX 时间戳，`秒为单位` |
-| latter\_time | long | O | 后置时间：UNIX 时间戳，`秒为单位` |
-| time\_sort | String | O | 时间排序：asc为正序，desc为反序，默认desc |
+| :--- | :--- | :--- | :--- |
+| card_no | String | M | 银行卡ID |
+| cust_tx_id | String | O | 机构交易流水id |
+| tx_id | String | O | 平台交易流水id |
+| page_num | int | O | 页数，默认第1页 |
+| page_size | int | O | 页的大小，默认20条 |
+| former_time | long | O | 前置时间：UNIX 时间戳，`秒为单位` |
+| latter_time | long | O | 后置时间：UNIX 时间戳，`秒为单位` |
+| time_sort | String | O | 时间排序：asc为正序，desc为反序，默认desc |
 
 
 ## 响应参数
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| tx\_id | String | remCard 交易流水id |
-| cust\_tx\_id | String | 机构交易流水id |
-| card\_no | String | 银行卡ID |
+| tx_id | String | remCard 交易流水id |
+| cust_tx_id | String | 机构交易流水id |
+| card_no | String | 银行卡ID |
 | amount_limit | String | 当前限额 |
 | old_amount_limit | String | 旧限额 |
 | status | String | 交易状态。 "0" 处理中，"1" 是成功，"2" 是失败 |
 | amount_modify | String | 变化的金额 |
-| available\_amount | String | 可用金额 |
-| old\_available\_amount | String | 旧的可用金额 |
+| available_amount | String | 可用金额 |
+| old_available_amount | String | 旧的可用金额 |
 
 
 ## 交易报文

@@ -11,28 +11,28 @@ GET https://{baseUrl}/api/v1/card/queryStatus
 ## 请求参数
 
 | Parameter | Type | Requirement | Description |
-| --- | --- | --- | --- |
-| acct\_no | String | O | 机构端用户编号(机构端唯一) |
-| card\_no | string | O | 银行卡号 |
+| :--- | :--- | :--- | :--- |
+| acct_no | String | O | 机构端用户编号(机构端唯一) |
+| card_no | string | O | 银行卡号 |
 | cust_tx_id | string | O | 机构开卡流水号 |
-| page\_num | int | O | 页数，默认第1页 |
-| page\_size | int | O | 页的大小，默认20条 |
-| former\_time | long | O | 前置时间：UNIX 时间戳，`秒为单位` |
-| latter\_time | long | O | 后置时间：UNIX 时间戳，`秒为单位` |
-| time\_sort | String | O | 时间排序：asc为正序，desc为反序，默认desc |
+| page_num | int | O | 页数，默认第1页 |
+| page_size | int | O | 页的大小，默认20条 |
+| former_time | long | O | 前置时间：UNIX 时间戳，`秒为单位` |
+| latter_time | long | O | 后置时间：UNIX 时间戳，`秒为单位` |
+| time_sort | String | O | 时间排序：asc为正序，desc为反序，默认desc |
 
 
 ## 响应参数
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| acct\_no | String | 机构端用户编号(机构端唯一) |
-| card\_type\_id | String | 卡类型ID |
-| card\_no | String | 银行卡号 |
+| acct_no | String | 机构端用户编号(机构端唯一) |
+| card_type_id | String | 卡类型ID |
+| card_no | String | 银行卡号 |
 | status | int | 状态码，详见 [卡片状态](/api/reference/enum_card_status#卡状态) |
 | reason | String | 激活失败原因。其他情况为空字符串 |
 | cust_tx_id | String | 机构的开卡流水号 |
-| create\_time | long | 创建时间 |
+| create_time | long | 创建时间 |
 
 
 ## 交易报文

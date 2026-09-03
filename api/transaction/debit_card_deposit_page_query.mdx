@@ -11,34 +11,34 @@ GET https://{baseUrl}/api/v1/deposit-transactions
 ## 请求参数
 
 | Parameter | Type | Requirement | Description |
-| --- | --- | --- | --- |
-| acct\_no | String | O | 机构端用户编号(机构端唯一) |
-| page\_num | int | O | 页数，默认第1页 |
-| page\_size | int | O | 页的大小，默认20条 |
-| former\_time | long | O | 前置时间：UNIX 时间戳，`秒为单位` |
-| latter\_time | long | O | 后置时间：UNIX 时间戳，`秒为单位` |
-| time\_sort | String | O | 时间排序：asc为正序，desc为反序，默认desc |
+| :--- | :--- | :--- | :--- |
+| acct_no | String | O | 机构端用户编号(机构端唯一) |
+| page_num | int | O | 页数，默认第1页 |
+| page_size | int | O | 页的大小，默认20条 |
+| former_time | long | O | 前置时间：UNIX 时间戳，`秒为单位` |
+| latter_time | long | O | 后置时间：UNIX 时间戳，`秒为单位` |
+| time_sort | String | O | 时间排序：asc为正序，desc为反序，默认desc |
 
 
 ## 响应参数
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| cust\_tx\_id | String | 机构流水号 |
-| acct\_no | String | 机构端用户编号(机构端唯一) |
-| card\_no | int | 银行卡ID |
-| cust\_tx\_time | long | 创建时间 |
-| tx\_id | String | 交易id |
-| coin\_type | int | 充值币种 |
-| tx\_amount | String | 充值金额 |
-| exchange\_fee | String | 充值币种兑换成USDT的费用，单位是 `coin_type` |
-| loading\_fee | String | 充值手续费，单位是 `coin_type` |
-| currency\_type | String | 到账法币类型 |
-| currency\_amount | String | 到账法币数量 |
-| exchange\_rate | String | USDT/法币汇率 |
-| fiat\_exchange\_rate | String | 卡支持的法币/USD汇率 |
-| tx\_status | int | 交易状态：详见 [充值状态](/api/reference/enum_trans_status#充值状态) |
-| coin\_price | String | coin\_type/USD汇率 |
+| cust_tx_id | String | 机构流水号 |
+| acct_no | String | 机构端用户编号(机构端唯一) |
+| card_no | int | 银行卡ID |
+| cust_tx_time | long | 创建时间 |
+| tx_id | String | 交易id |
+| coin_type | int | 充值币种 |
+| tx_amount | String | 充值金额 |
+| exchange_fee | String | 充值币种兑换成USDT的费用，单位是 `coin_type` |
+| loading_fee | String | 充值手续费，单位是 `coin_type` |
+| currency_type | String | 到账法币类型 |
+| currency_amount | String | 到账法币数量 |
+| exchange_rate | String | USDT/法币汇率 |
+| fiat_exchange_rate | String | 卡支持的法币/USD汇率 |
+| tx_status | int | 交易状态：详见 [充值状态](/api/reference/enum_trans_status#充值状态) |
+| coin_price | String | coin_type/USD汇率 |
 
 ## 交易报文
 

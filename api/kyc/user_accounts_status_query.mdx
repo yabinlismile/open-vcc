@@ -11,25 +11,25 @@ GET https://{baseUrl}/api/v1/customers/accounts/queryStatus
 ## 请求参数
 
 | Parameter | Type | Requirement | Description |
-| --- | --- | --- | --- |
-| acct\_no | String | O | 机构用户的唯一id号 |
-| page\_num | int | O | 页数 |
-| page\_size | int | O | 页的大小 |
-| former\_time | long | O | 前置时间, UNIX 时间戳，`秒为单位` |
-| latter\_time | long | O | 后置时间, UNIX 时间戳，`秒为单位` |
-| time\_sort | String | O | 时间排序, asc为升序，desc为降序 |
+| :--- | :--- | :--- | :--- |
+| acct_no | String | O | 机构用户的唯一id号 |
+| page_num | int | O | 页数 |
+| page_size | int | O | 页的大小 |
+| former_time | long | O | 前置时间, UNIX 时间戳，`秒为单位` |
+| latter_time | long | O | 后置时间, UNIX 时间戳，`秒为单位` |
+| time_sort | String | O | 时间排序, asc为升序，desc为降序 |
 
 
 ## 响应参数
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| acct\_no | String | 机构端用户编号(机构端唯一) |
-| card\_type\_id | String | 卡种类型id |
+| acct_no | String | 机构端用户编号(机构端唯一) |
+| card_type_id | String | 卡种类型id |
 | status | int | 状态码: 0 已提交，1 认证通过(开卡成功)，2 认证未通过，3 认证中，4 提交信息处理中，5 已退款，6 需要活体认证 |
 | face_recognition_url | string | 活体认证链接，无认证则为空 |
 | reason | String | 认证失败原因。其他情况为空字符串 |
-| create\_time | long | 创建时间 |
+| create_time | long | 创建时间 |
 
 
 

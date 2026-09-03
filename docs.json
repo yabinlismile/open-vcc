@@ -52,6 +52,7 @@
             "group": "卡片",
             "pages": [
               "api/card/card_apply",
+              "api/card/card_apply_no_kyc",
               "api/card/card_activate",
               "api/card/card_status_query",
               "api/card/card_activate_query",

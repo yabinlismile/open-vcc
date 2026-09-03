@@ -11,36 +11,36 @@ GET https://{baseUrl}/api/v1/customers/accounts/kyc
 ## 请求参数
 
 | Parameter | Type | Requirement | Description |
-| --- | --- | --- | --- |
-| acct\_no | String | M | 机构下用户账号 |
-| bank\_id | String | O | 机构下用户账号+银行种类对应的id 唯一 |
+| :--- | :--- | :--- | :--- |
+| acct_no | String | M | 机构下用户账号 |
+| bank_id | String | O | 机构下用户账号+银行种类对应的id 唯一 |
 
 
 ## 响应参数
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| acct\_no | String | 机构端用户编号(机构端唯一)，字符长度最大64位 |
-| acct\_name | String | 机构端用户名，字符长度最大64位 |
-| first\_name | String | 真实用户名，字符长度最大50位 |
-| last\_name | String | 真实用户姓，字符长度最大50位 |
+| acct_no | String | 机构端用户编号(机构端唯一)，字符长度最大64位 |
+| acct_name | String | 机构端用户名，字符长度最大64位 |
+| first_name | String | 真实用户名，字符长度最大50位 |
+| last_name | String | 真实用户姓，字符长度最大50位 |
 | gender | String | male:男，female:女，unknown:其他，字符长度最大6位 |
 | birthday | String | 生日（生日格式为"1990-01-01"） |
 | city | String | 城市，字符长度最大100位 |
 | state | String | 省份，字符长度最大100位 |
 | country | String | 用户所在国家，字符长度最大50位 |
 | nationality | String | 国籍，字符长度最大255位 |
-| doc\_no | String | 证件号码，字符长度最大128位 |
-| doc\_type | String | 证件类型(目前只支持passport): passport: 护照，idcard：身份证，字符长度最大8位 |
-| country\_code | String | 手机国际区号，如“+86”。字符长度最大5位 |
+| doc_no | String | 证件号码，字符长度最大128位 |
+| doc_type | String | 证件类型(目前只支持passport): passport: 护照，idcard：身份证，字符长度最大8位 |
+| country_code | String | 手机国际区号，如“+86”。字符长度最大5位 |
 | mobile | String | 手机号，字符长度最大32位 |
 | mail | String | 邮箱，不支持163.com的邮箱。字符长度最大64位 |
 | address | String | 通讯地址，银行卡会寄到该地址。字符长度最大256位 |
 | zipcode | String | 邮编，字符长度最大20位 |
-| maiden\_name | String | 妈妈的名字，字符长度最大255位 |
-| card\_type\_id | String | 银行卡种类对应的id,比如 10010001 |
-| kyc\_info | text | KYC 其他信息 |
-| cust\_tx\_id | String | KYC流水号 |
+| maiden_name | String | 妈妈的名字，字符长度最大255位 |
+| card_type_id | String | 银行卡种类对应的id,比如 10010001 |
+| kyc_info | text | KYC 其他信息 |
+| cust_tx_id | String | KYC流水号 |
 | status | int | 状态码: 0 已提交， 1 认证通过(开卡成功)， 2 认证未通过， 3 认证中， 4 提交信息处理中 5 已退款 6 需要活体认证 |
 | reason | String | 状态描述 |
 

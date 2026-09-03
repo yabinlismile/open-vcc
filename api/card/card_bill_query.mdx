@@ -11,44 +11,44 @@ POST https://{baseUrl}/api/v1/bank/transaction-record
 ## 请求参数
 
 | Parameter | Type | Requirement | Description |
-| --- | --- | --- | --- |
-| card\_no | String | M | 银行卡ID |
-| card\_currency | String | O | 卡币种，双币种卡才需要填写 |
-| former\_month\_year | String | M | 指定查询的月份(格式“012020”) |
-| latter\_month\_year | String | M | 指定查询的月份(格式“012020”) |
-| tx\_id | String | 选填（有tx\_id时，月份可不填） | 指定交易id查询 |
+| :--- | :--- | :--- | :--- |
+| card_no | String | M | 银行卡ID |
+| card_currency | String | O | 卡币种，双币种卡才需要填写 |
+| former_month_year | String | M | 指定查询的月份(格式“012020”) |
+| latter_month_year | String | M | 指定查询的月份(格式“012020”) |
+| tx_id | String | 选填（有tx_id时，月份可不填） | 指定交易id查询 |
 
 
 ## 响应参数
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| month\_year | String | 日期，MMyyyy |
-| statement\_cycle\_date | String | 报表生成日期 |
-| opening\_balance | String | 起始余额(卡支持的货币) |
-| opening\_balance\_usd | String | 起始余额(USD) |
-| closing\_balance | String | 截止余额(卡支持的货币) |
-| closing\_balance\_usd | String | 截止余额(USD) |
-| available\_balance | String | 可用余额(卡支持的货币) |
-| available\_balance\_usd | String | 可用余额(USD) |
-| bank\_tx\_list\[n\] | Object | 交易列表 |
-| bank\_tx\_list\[0\].transaction\_date | String | 交易日期 |
-| bank\_tx\_list\[0\].transaction\_time | Date | 交易日期（时间戳） |
-| bank\_tx\_list\[0\].posting\_date | String | 交易提交日期 |
-| bank\_tx\_list\[0\].tx\_id | String | 交易ID |
-| bank\_tx\_list\[0\].description | String | 描述 |
-| bank\_tx\_list\[0\].debit | String | 消费金额(卡支持的货币) |
-| bank\_tx\_list\[0\].debit\_usd | String | 消费金额(USD) |
-| bank\_tx\_list\[0\].credit | String | 存入金额(卡支持的货币) |
-| bank\_tx\_list\[0\].credit\_usd | String | 存入金额(USD) |
-| bank\_tx\_list\[0\].fee | String | 手续费，只有部分卡有值。 |
-| bank\_tx\_list\[0\].type | int | 卡交易类型，详见[卡交易类型](/api/reference/enum_card_txn_type#卡交易类型) |
-| bank\_tx\_list\[0\].reason | String | 交易失败原因 |
-| bank\_tx\_list\[0\].tx\_currency | String | 实际交易货币 |
-| bank\_tx\_list\[0\].tx\_amount | String | 实际交易货币的交易金额 |
-| bank\_tx\_list\[0\].end\_bal | String | 交易后余额。如果是0，代表没交易后余额 |
-| bank\_tx\_list\[0\].origin\_transaction\_id | String | 原消费交易id，退款交易才可能有值 |
-| bank\_tx\_list\[0\].merchant_country | String | 商户国家 |
+| month_year | String | 日期，MMyyyy |
+| statement_cycle_date | String | 报表生成日期 |
+| opening_balance | String | 起始余额(卡支持的货币) |
+| opening_balance_usd | String | 起始余额(USD) |
+| closing_balance | String | 截止余额(卡支持的货币) |
+| closing_balance_usd | String | 截止余额(USD) |
+| available_balance | String | 可用余额(卡支持的货币) |
+| available_balance_usd | String | 可用余额(USD) |
+| bank_tx_list\[n\] | Object | 交易列表 |
+| bank_tx_list\[0\].transaction_date | String | 交易日期 |
+| bank_tx_list\[0\].transaction_time | Date | 交易日期（时间戳） |
+| bank_tx_list\[0\].posting_date | String | 交易提交日期 |
+| bank_tx_list\[0\].tx_id | String | 交易ID |
+| bank_tx_list\[0\].description | String | 描述 |
+| bank_tx_list\[0\].debit | String | 消费金额(卡支持的货币) |
+| bank_tx_list\[0\].debit_usd | String | 消费金额(USD) |
+| bank_tx_list\[0\].credit | String | 存入金额(卡支持的货币) |
+| bank_tx_list\[0\].credit_usd | String | 存入金额(USD) |
+| bank_tx_list\[0\].fee | String | 手续费，只有部分卡有值。 |
+| bank_tx_list\[0\].type | int | 卡交易类型，详见[卡交易类型](/api/reference/enum_card_txn_type#卡交易类型) |
+| bank_tx_list\[0\].reason | String | 交易失败原因 |
+| bank_tx_list\[0\].tx_currency | String | 实际交易货币 |
+| bank_tx_list\[0\].tx_amount | String | 实际交易货币的交易金额 |
+| bank_tx_list\[0\].end_bal | String | 交易后余额。如果是0，代表没交易后余额 |
+| bank_tx_list\[0\].origin_transaction_id | String | 原消费交易id，退款交易才可能有值 |
+| bank_tx_list\[0\].merchant_country | String | 商户国家 |
 
 
 ## 交易报文

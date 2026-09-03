@@ -10,41 +10,41 @@ POST https://{baseUrl}/api/v1/customers/accounts
 
 ## 请求参数
 
-| Parameter | Type | Requirement | Description |
-| :--- | :--- | :-- | :--- |
-| acct\_no | String | M | 机构端用户编号(机构端唯一)，字符长度最大64 |
-| acct\_name | String | M | 机构端用户名，字符长度最大64 |
-| first\_name | String | M | 真实用户名，字符长度最大50 |
-| last\_name | String | M | 真实用户姓，字符长度最大50 |
-| gender | String | O | male:男，female:女，unknown:其他，字符长度最大6 |
-| birthday | String | M | 生日（生日格式为"1990-01-01"） |
-| city | String | M | 城市，字符长度最大100 |
-| state | String | M | 省份，字符长度最大100 |
-| country | String | M | 用户所在国家，字符长度最大50，2位编码 |
-| nationality | String | M | 国籍，字符长度最大255，2位编码 |
-| doc\_no | String | M | 证件号码，字符长度最大128 |
-| doc\_type | String | M | 证件类型: passport: 护照，idcard：身份证，driver：驾驶证，字符长度最大8 |
-| front\_doc | String | C | 正面照。base64编码, 照片文件大小应小于2M。token为空时必填 |
-| back\_doc | String | O | 反面照，doc\_type是idcard时必须填写。base64编码，照片文件大小应小于2M |
-| mix\_doc | String | C | 手持证件照。base64编码，照片文件大小应小于2M。token为空时必填 |
-| country\_code | String | M | 手机国际区号，如“+86”。字符长度最大5 |
-| mobile | String | M | 手机号，字符长度最大32 |
-| mail | String | M | 邮箱，不支持163.com的邮箱。字符长度最大64 |
-| address | String | M | 通讯地址，银行卡会寄到该地址。字符长度最大256 |
-| zipcode | String | M | 邮编，字符长度最大20 |
-| maiden\_name | String | O | 妈妈的名字，字符长度最大255 |
-| card\_type\_id | String | C | 银行卡种类对应的id,比如 10010001，card_type_id和bank_id必填其一 |
-| bank_id | String | C | 银行种类对应的id,比如 1001，card_type_id和bank_id必填其一 |
-| kyc\_info | String | O | KYC 其他信息 |
-| mail\_verification\_code | String | O | 邮箱验证码 |
-| mail\_token | String | O | 发送邮件后返回的token |
-| cust\_tx\_id | String | O | KYC流水号 |
-| sign\_img | String | O | 签名照片。base64编码，照片文件大小应小于1M |
-| poa\_doc | String\[3\] | O | 地址证明照片（暂不支持）。base64编码，照片或PDF文件每个文件大小应小于2M |
-| card\_number | String | O | 绑卡卡号，用于提前售卡，只支持J卡 |
-| date_of_expiry | String | O | 证件到期日期，yyyy-MM-dd |
-| provider | String | O | 1 SUMSUB 2 MYINFO 3 JUMIO 4 DIDIT 5 SHUFTI |
-| token | String | O | 令牌验证 |
+| Parameter | Type | Requirement | Length | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| acct_no | String | M | 64 | 机构端用户编号唯一 |
+| acct_name | String | M | 64 | 机构端用户名 |
+| first_name | String | M | 50| 真实用户名 |
+| last_name | String | M | 50 | 真实用户姓 |
+| gender | String | O | 6| male:男，female:女，unknown:其他 |
+| birthday | String | M | 10 | 生日格式1990-01-01 |
+| city | String | M | 100 | 所在城市 |
+| state | String | M | 100  | 所在省份 |
+| country | String | M | 50 | 所在国家，2位编码 |
+| nationality | String | M | 255 | 国籍，2位编码 |
+| doc_no | String | M | 128 | 证件号码|
+| doc_type | String | M | 8 | 证件类型: passport：护照，idcard：身份证，driver：驾驶证 |
+| front_doc | String | C | text | 头像面，应小于2M。base64编码，token为空时必填 |
+| back_doc | String | O | text | 国徽面，应小于2M。base64编码，身份证必填 |
+| mix_doc | String | C | text | 手持证件照，应小于2M。base64编码，token为空时必填 |
+| country_code | String | M | 5 | 手机国际区号，如“+86” |
+| mobile | String | M |  | 手机号 |
+| mail | String | M | 64 | 邮箱，不支持163.com的邮箱 |
+| address | String | M | 256 | 通讯地址，银行卡会寄到该地址 |
+| zipcode | String | M | 20 | 邮编 |
+| maiden_name | String | O |255  | 妈妈的名字 |
+| bank_id | String | M | 4 | 银行种类对应的id,比如 1001 |
+| kyc_info | String | O | text | KYC 其他信息 |
+| mail_verification_code | String | O | 64 | 邮箱验证码 |
+| mail_token | String | O | 512 | 发送邮件后返回的token |
+| cust_tx_id | String | O | 32 | KYC流水号 |
+| sign_img | String | O | text | 签名照片。base64编码，照片文件大小应小于1M |
+| poa_doc | String\[3\] | O | text | 地址证明照片（暂不支持）。base64编码，照片或PDF文件每个文件大小应小于2M |
+| card_number | String | O | 32 | 绑卡卡号，用于提前售卡 |
+| date_of_expiry | String | O | 10 | 证件到期日期，yyyy-MM-dd |
+| provider | String | O | 1 | 1:SUMSUB 2:MYINFO 3:JUMIO 4:DIDIT 5:SHUFTI |
+| token | String | O | 512 | 令牌验证 |
+
 
 ## 响应参数
 
