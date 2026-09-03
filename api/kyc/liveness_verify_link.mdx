@@ -12,9 +12,9 @@ GET https://{baseUrl}/api/v1/customers/accounts/url
 
 | Parameter | Type | Requirement | Description |
 | --- | --- | --- | --- |
-| acct\_no | String | 必填 | 机构用户的唯一id号 |
-| card_type_id | String | 选填 | 卡种类型ID（与bank_id二选一） |
-| bank_id | String | 选填 | 银行ID（与card_type_id二选一） |
+| acct\_no | String | M | 机构用户的唯一id号 |
+| card_type_id | String | O | 卡种类型ID（与bank_id二选一） |
+| bank_id | String | O | 银行ID（与card_type_id二选一） |
 
 
 ## 响应参数

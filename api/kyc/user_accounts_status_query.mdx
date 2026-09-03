@@ -12,12 +12,12 @@ GET https://{baseUrl}/api/v1/customers/accounts/queryStatus
 
 | Parameter | Type | Requirement | Description |
 | --- | --- | --- | --- |
-| acct\_no | String | 选填 | 机构用户的唯一id号 |
-| page\_num | int | 选填 | 页数 |
-| page\_size | int | 选填 | 页的大小 |
-| former\_time | long | 选填 | 前置时间, UNIX 时间戳，`秒为单位` |
-| latter\_time | long | 选填 | 后置时间, UNIX 时间戳，`秒为单位` |
-| time\_sort | String | 选填 | 时间排序, asc为升序，desc为降序 |
+| acct\_no | String | O | 机构用户的唯一id号 |
+| page\_num | int | O | 页数 |
+| page\_size | int | O | 页的大小 |
+| former\_time | long | O | 前置时间, UNIX 时间戳，`秒为单位` |
+| latter\_time | long | O | 后置时间, UNIX 时间戳，`秒为单位` |
+| time\_sort | String | O | 时间排序, asc为升序，desc为降序 |
 
 
 ## 响应参数

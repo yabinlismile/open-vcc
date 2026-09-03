@@ -12,14 +12,14 @@ POST https://{baseUrl}/api/v1/bank/transactionQuery
 
 | Parameter | Type | Requirement | Description |
 | --- | --- | --- | --- |
-| page\_num | int | 选填 | 页数，默认1 |
-| page\_size | int | 选填 | 页的大小，默认20 |
-| card\_no | String | 选填 | 银行卡ID |
-| txn\_type | String | 选填 | 交易类型，详见[卡交易类型](/api/reference/enum_card_txn_type#卡交易类型) |
-| trace\_no | String | 选填 | 订单跟踪号（与交易流水号不同时为空）  |
-| txn\_id | String | 选填 | 交易流水号 |
-| txn\_start\_time | strng | 选填 | 查询交易开始时间：yyyy-MM-dd HH:mi:ss |
-| txn\_end\_time | strng | 选填 | 查询交易结束时间：yyyy-MM-dd HH:mi:ss |
+| page\_num | int | O | 页数，默认1 |
+| page\_size | int | O | 页的大小，默认20 |
+| card\_no | String | O | 银行卡ID |
+| txn\_type | String | O | 交易类型，详见[卡交易类型](/api/reference/enum_card_txn_type#卡交易类型) |
+| trace\_no | String | O | 订单跟踪号（与交易流水号不同时为空）  |
+| txn\_id | String | O | 交易流水号 |
+| txn\_start\_time | strng | O | 查询交易开始时间：yyyy-MM-dd HH:mi:ss |
+| txn\_end\_time | strng | O | 查询交易结束时间：yyyy-MM-dd HH:mi:ss |
 
 
 ## 响应参数

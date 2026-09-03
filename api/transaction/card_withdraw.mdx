@@ -12,12 +12,12 @@ POST https://{baseUrl}/api/v1/deposit-transactions/withdraw
 
 | Parameter | Type | Requirement | Description |
 | --- | --- | --- | --- |
-| card\_no | String | 必填 | 银行卡ID |
-| acct\_no | String | 必填 | 机构端用户编号(机构端唯一) |
-| amount | String | 必填 | 提现对应币种的金额 最多可以有10位数字 小数部分最多可以有2位数字|
-| coin\_type | String | 必填 | 币种。只支持USDT |
-| cust\_tx\_id | String | 必填 | 机构的交易流水号 |
-| remark | String | 选填 | 交易备注 |
+| card\_no | String | M | 银行卡ID |
+| acct\_no | String | M | 机构端用户编号(机构端唯一) |
+| amount | String | M | 提现对应币种的金额 最多可以有10位数字 小数部分最多可以有2位数字|
+| coin\_type | String | M | 币种。只支持USDT |
+| cust\_tx\_id | String | M | 机构的交易流水号 |
+| remark | String | O | 交易备注 |
 
 
 ## 响应参数

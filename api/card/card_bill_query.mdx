@@ -12,10 +12,10 @@ POST https://{baseUrl}/api/v1/bank/transaction-record
 
 | Parameter | Type | Requirement | Description |
 | --- | --- | --- | --- |
-| card\_no | String | 必填 | 银行卡ID |
-| card\_currency | String | 选填 | 卡币种，双币种卡才需要填写 |
-| former\_month\_year | String | 必填 | 指定查询的月份(格式“012020”) |
-| latter\_month\_year | String | 必填 | 指定查询的月份(格式“012020”) |
+| card\_no | String | M | 银行卡ID |
+| card\_currency | String | O | 卡币种，双币种卡才需要填写 |
+| former\_month\_year | String | M | 指定查询的月份(格式“012020”) |
+| latter\_month\_year | String | M | 指定查询的月份(格式“012020”) |
 | tx\_id | String | 选填（有tx\_id时，月份可不填） | 指定交易id查询 |
 
 

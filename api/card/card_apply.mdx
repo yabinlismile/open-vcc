@@ -12,19 +12,19 @@ POST https://{baseUrl}/api/v1/card/apply
 
 | Parameter | Type | Requirement | Description |
 | --- | --- | --- | --- |
-| acct\_no | String | 必填 | 机构端用户编号(机构端唯一) |
-| card\_type\_id | String | 必填 | 卡种对应的id |
-| card\_number | String | 选填 | 支持绑卡的卡种才需要填写。用户自己填写卡号绑卡 |
-| active_code | String | 选填 | 激活码 |
-| urn | String | 选填 | 支持绑卡的卡种才需要填写。信封号 |
-| address | String | 选填 | 账单地址或者实体卡邮寄地址。字符长度最大256 |
-| country | String | 选填 | 国家，字符长度最大50，2位编码 |
-| state | String | 选填 | 省份，字符长度最大100 |
-| city | String | 选填 | 城市，字符长度最大100 |
-| zipcode | String | 选填 | 邮编，字符长度最大20 |
-| country_code | String | 选填 | 手机国际区号，如“+86”。字符长度最大5 |
-| mobile | String | 选填 | 手机号，字符长度最大32 |
-| cust_tx_id | String | 选填 | 机构的开卡流水号，最大64 |
+| acct\_no | String | M | 机构端用户编号(机构端唯一) |
+| card\_type\_id | String | M | 卡种对应的id |
+| card\_number | String | O | 支持绑卡的卡种才需要填写。用户自己填写卡号绑卡 |
+| active_code | String | O | 激活码 |
+| urn | String | O | 支持绑卡的卡种才需要填写。信封号 |
+| address | String | O | 账单地址或者实体卡邮寄地址。字符长度最大256 |
+| country | String | O | 国家，字符长度最大50，2位编码 |
+| state | String | O | 省份，字符长度最大100 |
+| city | String | O | 城市，字符长度最大100 |
+| zipcode | String | O | 邮编，字符长度最大20 |
+| country_code | String | O | 手机国际区号，如“+86”。字符长度最大5 |
+| mobile | String | O | 手机号，字符长度最大32 |
+| cust_tx_id | String | O | 机构的开卡流水号，最大64 |
 
 
 ## 响应参数

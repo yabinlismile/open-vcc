@@ -12,14 +12,14 @@ GET https://{baseUrl}/api/v1/credit/getCardLimitTxn
 
 | Parameter | Type | Requirement | Description |
 | --- | --- | --- | --- |
-| card\_no | String | 必填 | 银行卡ID |
-| cust\_tx\_id | String | 选填 | 机构交易流水id |
-| tx\_id | String | 选填 | 平台交易流水id |
-| page\_num | int | 选填 | 页数，默认第1页 |
-| page\_size | int | 选填 | 页的大小，默认20条 |
-| former\_time | long | 选填 | 前置时间：UNIX 时间戳，`秒为单位` |
-| latter\_time | long | 选填 | 后置时间：UNIX 时间戳，`秒为单位` |
-| time\_sort | String | 选填 | 时间排序：asc为正序，desc为反序，默认desc |
+| card\_no | String | M | 银行卡ID |
+| cust\_tx\_id | String | O | 机构交易流水id |
+| tx\_id | String | O | 平台交易流水id |
+| page\_num | int | O | 页数，默认第1页 |
+| page\_size | int | O | 页的大小，默认20条 |
+| former\_time | long | O | 前置时间：UNIX 时间戳，`秒为单位` |
+| latter\_time | long | O | 后置时间：UNIX 时间戳，`秒为单位` |
+| time\_sort | String | O | 时间排序：asc为正序，desc为反序，默认desc |
 
 
 ## 响应参数

@@ -12,12 +12,12 @@ GET https://{baseUrl}/api/v1/deposit-transactions
 
 | Parameter | Type | Requirement | Description |
 | --- | --- | --- | --- |
-| acct\_no | String | 选填 | 机构端用户编号(机构端唯一) |
-| page\_num | int | 选填 | 页数，默认第1页 |
-| page\_size | int | 选填 | 页的大小，默认20条 |
-| former\_time | long | 选填 | 前置时间：UNIX 时间戳，`秒为单位` |
-| latter\_time | long | 选填 | 后置时间：UNIX 时间戳，`秒为单位` |
-| time\_sort | String | 选填 | 时间排序：asc为正序，desc为反序，默认desc |
+| acct\_no | String | O | 机构端用户编号(机构端唯一) |
+| page\_num | int | O | 页数，默认第1页 |
+| page\_size | int | O | 页的大小，默认20条 |
+| former\_time | long | O | 前置时间：UNIX 时间戳，`秒为单位` |
+| latter\_time | long | O | 后置时间：UNIX 时间戳，`秒为单位` |
+| time\_sort | String | O | 时间排序：asc为正序，desc为反序，默认desc |
 
 
 ## 响应参数
