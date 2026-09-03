@@ -29,7 +29,7 @@ POST https://{baseUrl}/api/v1/customers/accounts
 | mix_doc | String | C | text | 手持证件照，应小于2M。base64编码，token为空时必填 |
 | country_code | String | M | 5 | 手机国际区号，如“+86” |
 | mobile | String | M |  | 手机号 |
-| mail | String | M | 64 | 邮箱，不支持163.com的邮箱 |
+| mail | String | M | 64 | 邮箱号 |
 | address | String | M | 256 | 通讯地址，银行卡会寄到该地址 |
 | zipcode | String | M | 20 | 邮编 |
 | maiden_name | String | O |255  | 妈妈的名字 |
@@ -38,8 +38,7 @@ POST https://{baseUrl}/api/v1/customers/accounts
 | mail_verification_code | String | O | 64 | 邮箱验证码 |
 | mail_token | String | O | 512 | 发送邮件后返回的token |
 | cust_tx_id | String | O | 32 | KYC流水号 |
-| sign_img | String | O | text | 签名照片。base64编码，照片文件大小应小于1M |
-| poa_doc | String\[3\] | O | text | 地址证明照片（暂不支持）。base64编码，照片或PDF文件每个文件大小应小于2M |
+| sign_img | String | O | text | 签名照片，应小于1M。base64编码 |
 | card_number | String | O | 32 | 绑卡卡号，用于提前售卡 |
 | date_of_expiry | String | O | 10 | 证件到期日期，yyyy-MM-dd |
 | provider | String | O | 1 | 1:SUMSUB 2:MYINFO 3:JUMIO 4:DIDIT 5:SHUFTI |

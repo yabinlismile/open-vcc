@@ -15,10 +15,10 @@ POST https://{baseUrl}/api/v1/card/apply
 | :--- | :--- | :--- | :--- | :--- |
 | acct_no | String | M | 64 | 机构端用户编号唯一 |
 | card_type_id | String | M | 10 | 卡种对应的id |
-| card_number | String | O | 32 | 支持绑卡的卡种才需要填写。用户自己填写卡号绑卡 |
-| active_code | String | O |  | 激活码 |
+| card_number | String | O | 32 | 特殊卡种可绑卡 |
+| active_code | String | O | 32 | 激活码 |
 | urn | String | O | 50 | 信封号 |
-| address | String | O |  256| 账单地址或者实体卡邮寄地址 |
+| address | String | O |  256| 账单地址/邮寄地址 |
 | country | String | O | 50 | 国家，2位编码 |
 | state | String | O | 100 | 省份 |
 | city | String | O | 100 | 城市 |
