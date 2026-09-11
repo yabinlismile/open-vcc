@@ -111,6 +111,7 @@
             "group": "引用数据",
             "pages": [
               "api/reference/enum_card_status",
+              "api/reference/enum_recharge_status",
               "api/reference/enum_trans_status",
               "api/reference/enum_card_txn_type",
               "api/reference/enum_notify_event",
