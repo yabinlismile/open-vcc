@@ -27,29 +27,21 @@ POST https://{baseUrl}/api/v1/bank/transactionQuery
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | trace_no | String | 订单跟踪号 |
-| card_no | String | 卡ID |
-| credit | String | 存入金额(卡支持的货币) |
-| credit_usd | String | 存入金额(USD) |
-| credit_usdt | String | 存入金额(USDT) |
-| debit | String | 消费金额(卡支持的货币) |
-| debit_usd | String | 消费金额(USD) |
-| debit_usdt | String | 消费金额(USDT) |
-| description | String | 描述 |
-| fee | String | 手续费，只有部分卡有，fee=fxFee+authFee+atmFee+fixedFee |
-| fxFee | String | 换汇手续费，涉及换汇会有 |
-| authFee | String | 授权手续费，只有部分卡有 |
-| atmFee | String | ATM手续费，只有部分卡有 |
-| fixedFee | String | 固定手续费，只有部分卡有 |
-| origin_transaction_id | String | 原交易流水号（当追加授权时，返回的是首次授权订单跟踪号） |
-| posting_date | String | 交易提交日期 |
-| reason | String | 交易失败原因 |
+| tx_type | String | 交易类型，详见[卡交易类型](/api/reference/enum_card_txn_type#卡交易类型) |
+| tx_status | String | 交易状态，详见[交易状态](/api/reference/enum_trans_status#交易状态) |
+| tx_id | String | 交易ID |
+| orig_tx_id | String | 原交易ID |
+| card_no | String | 银行卡ID |
 | transaction_date | String | 交易日期 |
 | transaction_time | Date | 交易时间戳 |
-| tx_amount | String | 实际交易货币的交易金额 |
+| tx_amount | String | 实际交易金额 |
 | tx_currency | String | 实际交易货币 |
-| end_bal | String | 交易后余额。如果是0 代表没交易后余额 |
-| tx_id | String | 交易流水号 |
-| type | int |交易类型 |
+| bill_amount | String | 账单金额 |
+| bill_currency | String | 账单币种 |
+| fee | String | 手续费，只有部分卡有，fee包含fx_fee |
+| fx_fee | String | 换汇手续费，涉及换汇会有 |
+| description | String | 交易描述 |
+| reason | String | 交易失败原因 |
 | merchant_country | String | 商户国家 |
 | merchant_name | String | 商户名称 |
 | merchant_mcc | String | 商户mcc码 |
@@ -77,32 +69,24 @@ POST https://{baseUrl}/api/v1/bank/transactionQuery
 		"total": 1,
 		"records": [{
 			"trace_no": "T20260407141549717663",
+			"tx_type": "A",
+			"tx_status": "1",
+			"tx_id": "2beea362-1713-4854-a9a2-8e6f200e9217",
+			"orig_tx_id": "",
 			"card_no": "26641088522630000018110",
-			"tx_id": "S2604080130597135",
-			"transaction_date": "08/04/2026",
-			"transaction_time": 1775611834000,
-			"posting_date": "08/04/2026",
-			"description": "Tevau",
-			"type": 1,
-			"debit": "36.00",
-			"debit_usd": "6.00",
-			"credit": "0",
-			"credit_usd": null,
-			"tx_currency": "CNY",
-			"tx_amount": "36.00",
-			"fee": "0.20",
-			"fx_fee": "0.13",
-			"auth_fee": "0.07",
-			"atm_fee": "0",
-			"fixed_fee": "0",
-			"debit_usdt": null,
-			"credit_usdt": null,
-			"end_bal": 0,
-			"origin_transaction_id": "",
+			"transaction_date": "09/07/2025",
+			"transaction_time": 1752062446000,
+			"tx_amount": "5",
+			"tx_currency": "USD",
+			"bill_amount": "",
+			"bill_currency": "",
+			"fee": "0",
+			"fx_fee": "0",
+			"description": "Orchard Central , ",
 			"reason": "",
-			"merchant_country": "HK",
-			"merchant_name": "Tevau",
-			"merchant_mcc": "6011"
+			"merchant_country": "",
+			"merchant_name": "",
+			"merchant_mcc": ""
 		}]
 	}
 }
