@@ -9,7 +9,7 @@ description: ""
 
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
-| action | String | tx-status |
+| action | String | card-deposit |
 | tx_id | String | 交易ID |
 | status | int | 卡充值状态：1.成功, 2.失败, 5.取消 |
 | reason | String | 原因（如果status为 1，5 则为空） |
@@ -27,7 +27,7 @@ import commonEventResponse from '/snippets/common_event_response.mdx'
 <CodeGroup>
 ```json Request
 {
-  "action": "tx-status",
+  "action": "card-deposit",
   "tx_id": "20250709033431062012427363",
   "status": 1,
   "reason": ""
