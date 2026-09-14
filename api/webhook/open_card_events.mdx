@@ -9,7 +9,7 @@ description: "银行卡已制作完成，请申请银行卡"
 
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
-| action | String | card-application-ready |
+| action | String | open-card-application |
 | acct_no | String | 机构下用户唯一ID |
 | card_type_id | String | 卡类型 |
 | card_no | String | 卡ID |
@@ -30,7 +30,7 @@ import commonEventResponse from '/snippets/common_event_response.mdx'
 <CodeGroup>
 ```json Request
 {
-  "action": "card-application-ready",
+  "action": "open-card-application",
   "card_type_id": "32000001",
   "reason": "FAILED_Flagged On Sentro",
   "acct_no": "202507080001",
