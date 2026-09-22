@@ -1,11 +1,11 @@
 ---
-title: "共享账户充值"
-sidebarTitle: "共享账户充值"
-description: "卡种的共享账户充值"
+title: "卡组充值"
+sidebarTitle: "卡组充值"
+description: "卡组充值"
 ---
 
 ```
-POST https://{baseUrl}/api/v1/share/shareaccount/deposit
+POST https://{baseUrl}/api/v2/cardGroup/deposit
 ```
 
 ## 请求参数
@@ -14,7 +14,7 @@ POST https://{baseUrl}/api/v1/share/shareaccount/deposit
 | --- | --- | --- | --- |
 | card_type_id | String | M | 卡种id，如20000001 |
 | card_group_id | String | M | 卡组ID|
-| amount | String | M | 金额，单位是usdt |
+| amount | String | M | 交易金额，单位是usdt |
 | cust_tx_id | String | O | 机构唯一的流水号 |
 
 

@@ -1,11 +1,11 @@
 ---
-title: "共享账户充值查询"
-sidebarTitle: "共享账户充值查询"
-description: "卡种的共享账户充值查询"
+title: "卡组充值查询"
+sidebarTitle: "卡组充值查询"
+description: "卡组充值查询"
 ---
 
 ```
-GET https://{baseUrl}/api/v1/share/shareaccount/depositQuery
+GET https://{baseUrl}/api/v2/cardGroup/depositQuery
 ```
 
 ## 请求参数
@@ -21,7 +21,7 @@ GET https://{baseUrl}/api/v1/share/shareaccount/depositQuery
 | Parameter | Type | Requirement| Description |
 | --- | --- | --- | --- |
 | status | number | M | 0处理中，1成功，2失败 |
-| amount | number | M | 金额，单位是usdt |
+| amount | number | M | 交易金额，单位是usdt |
 
 
 ## 交易报文

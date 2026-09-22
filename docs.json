@@ -65,6 +65,17 @@
             ]
           },
           {
+            "group": "卡组",
+            "pages": [
+              "api/group/card_group_create",
+              "api/group/card_group_update",
+              "api/group/card_group_query",
+              "api/group/card_group_deposit",
+              "api/group/card_group_deposit_query",
+              "api/group/card_group_balance_query"
+            ]
+          },
+          {
             "group": "交易",
             "pages": [
               "api/transaction/debit_card_deposit",
@@ -78,14 +89,6 @@
               "api/transaction/card_withdraw",
               "api/transaction/card_3ds_auth_confirm",
               "api/transaction/card_transaction_query"
-            ]
-          },
-          {
-            "group": "账户",
-            "pages": [
-              "api/account/shareaccount_deposit",
-              "api/account/shareaccount_deposit_query",
-              "api/account/shareaccount_balance_query"
             ]
           },
           {
