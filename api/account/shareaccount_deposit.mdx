@@ -1,0 +1,42 @@
+---
+title: "共享账户充值"
+sidebarTitle: "共享账户充值"
+description: "卡种的共享账户充值"
+---
+
+```
+POST https://{baseUrl}/api/v1/credit/shareaccount/deposit
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card_type_id | String | M | 卡种id，如20000001 |
+| card_group_id | String | M | 卡组ID|
+| amount | String | M | 金额，单位是usdt |
+| cust_tx_id | String | O | 机构唯一的流水号 |
+
+
+## 响应参数
+
+| Parameter | Type | Requirement| Description |
+| --- | --- | --- | --- |
+| tx_id | string | M | bycard返回唯一的流水号 |
+| old_balance | number | O | 变成前余额，仅成功时返回 |
+| balance | number | O | 变成后余额，仅成功时返回 |
+| cust_tx_id | string | O | 机构唯一的流水号 |
+| status | number | M | 0处理中，1成功，2失败 |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+
+```
+
+```json Response
+
+```
+</CodeGroup>

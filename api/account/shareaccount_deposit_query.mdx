@@ -1,0 +1,37 @@
+---
+title: "共享账户充值查询"
+sidebarTitle: "共享账户充值查询"
+description: "卡种的共享账户充值查询"
+---
+
+```
+GET https://{baseUrl}/api/v1/credit/shareaccount/depositQuery
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| tx_id | String | O | 交易流水号，与cust_tx_id必传其一 |
+| cust_tx_id | String | O | 机构请求流水号，与tx_id必传其一 |
+
+
+## 响应参数
+
+| Parameter | Type | Requirement| Description |
+| --- | --- | --- | --- |
+| status | number | M | 0处理中，1成功，2失败 |
+| amount | number | M | 金额，单位是usdt |
+
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+
+```
+
+```json Response
+
+```
+</CodeGroup>

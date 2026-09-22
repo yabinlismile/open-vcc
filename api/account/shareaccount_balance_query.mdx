@@ -1,0 +1,41 @@
+---
+title: "共享账户余额查询"
+sidebarTitle: "共享账户余额查询"
+description: "卡种的共享账户余额查询"
+---
+
+```
+GET https://{baseUrl}/api/v1/credit/shareaccount/balance
+```
+
+## 请求参数
+
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card_type_id | String | M | 卡种id |
+| card_group_id | String | M | 卡组ID|
+
+
+## 响应参数
+
+| Parameter | Type   | Description  |
+|-----------|--------|---------------|
+| balance   | String | 余额 |
+
+## 交易报文
+
+<CodeGroup>
+```json Request
+
+```
+
+```json Response
+{
+  "code": 0,
+  "msg": "string",
+  "result": {
+    "balance": "1000"
+  }
+}
+```
+</CodeGroup>

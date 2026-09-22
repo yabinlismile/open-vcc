@@ -81,6 +81,14 @@
             ]
           },
           {
+            "group": "账户",
+            "pages": [
+              "api/account/shareaccount_deposit",
+              "api/account/shareaccount_deposit_query",
+              "api/account/shareaccount_balance_query"
+            ]
+          },
+          {
             "group": "机构交互",
             "pages": [
               "api/institution/balance_query",
