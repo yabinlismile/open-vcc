@@ -5,24 +5,42 @@ description: "卡组创建"
 ---
 
 ```
- https://{baseUrl}/api/v2/cardGroup/create
+POST https://{baseUrl}/api/v2/cardGroup/create
 ```
 
 ## 请求参数
 
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card_type_id | String | M | 卡种id，如20000001 |
+| card_group_name | String | M | 卡组名称 |
 
 
 ## 响应参数
 
+| Parameter | Type | Description |
+| --- | --- | --- |
+| card_group_id | String | 卡组ID |
+| card_group_name | String | 卡组名称 |
 
 ## 交易报文
 
 <CodeGroup>
 ```json Request
-
+{
+	"card_type_id": "20000001",
+	"card_group_name": "test card group 2"
+}
 ```
 
 ```json Response
-
+{
+	"code": 0,
+	"msg": "SUCCESS",
+	"result": {
+		"card_group_id": "cg_2609231452523099",
+		"card_group_name": "test card group 2"
+	}
+}
 ```
 </CodeGroup>

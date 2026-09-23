@@ -5,24 +5,43 @@ description: "卡组查询"
 ---
 
 ```
- https://{baseUrl}/api/v2/cardGroup/list
+GET https://{baseUrl}/api/v2/cardGroup/query
 ```
 
 ## 请求参数
 
+| Parameter | Type | Requirement | Description |
+| --- | --- | --- | --- |
+| card_group_id | String | M | 卡组ID |
 
 
 ## 响应参数
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| card_group_id | String | 卡组ID |
+| card_group_name | String | 卡组名称 |
+| total_amount | String | 总余额 |
+| available_amount | String | 可用余额 |
 
 
 ## 交易报文
 
 <CodeGroup>
 ```json Request
-
+card_group_id=cg_2609231452523099
 ```
 
 ```json Response
-
+{
+	"code": 0,
+	"msg": "SUCCESS",
+	"result": {
+		"card_group_id": "card_group_uvo2zef9uhgn",
+		"card_group_name": "test card group 2",
+		"total_amount": 0,
+		"available_amount": 0
+	}
+}
 ```
 </CodeGroup>

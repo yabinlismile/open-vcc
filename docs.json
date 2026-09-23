@@ -68,7 +68,6 @@
             "group": "卡组",
             "pages": [
               "api/group/card_group_create",
-              "api/group/card_group_update",
               "api/group/card_group_query",
               "api/group/card_group_deposit",
               "api/group/card_group_deposit_query",

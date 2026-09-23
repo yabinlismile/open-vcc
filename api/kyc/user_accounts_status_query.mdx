@@ -27,7 +27,7 @@ GET https://{baseUrl}/api/v1/customers/accounts/queryStatus
 | acct_no | String | 机构端用户编号(机构端唯一) |
 | card_type_id | String | 卡种类型id |
 | status | int | 状态码: 0 已提交，1 认证通过(开卡成功)，2 认证未通过，3 认证中，4 提交信息处理中，5 已退款，6 需要活体认证 |
-| face_recognition_url | string | 活体认证链接，无认证则为空 |
+| face_recognition_url | String | 活体认证链接，无认证则为空 |
 | reason | String | 认证失败原因。其他情况为空字符串 |
 | create_time | long | 创建时间 |
 
