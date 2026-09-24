@@ -16,7 +16,7 @@ POST https://{baseUrl}/api/v1/bank/transaction-record
 | card_currency | String | O | 卡币种，双币种卡才需要填写 |
 | former_month_year | String | M | 指定查询的月份(格式“012020”) |
 | latter_month_year | String | M | 指定查询的月份(格式“012020”) |
-| tx_id | String | 选填（有tx_id时，月份可不填） | 指定交易id查询 |
+| tx_id | String | O | 交易id，tx_id非空时月份可不填 |
 
 
 ## 响应参数
@@ -31,24 +31,26 @@ POST https://{baseUrl}/api/v1/bank/transaction-record
 | closing_balance_usd | String | 截止余额(USD) |
 | available_balance | String | 可用余额(卡支持的货币) |
 | available_balance_usd | String | 可用余额(USD) |
-| bank_tx_list\[n\] | Object | 交易列表 |
-| bank_tx_list\[0\].transaction_date | String | 交易日期 |
-| bank_tx_list\[0\].transaction_time | Date | 交易日期（时间戳） |
-| bank_tx_list\[0\].posting_date | String | 交易提交日期 |
-| bank_tx_list\[0\].tx_id | String | 交易ID |
-| bank_tx_list\[0\].description | String | 描述 |
-| bank_tx_list\[0\].debit | String | 消费金额(卡支持的货币) |
-| bank_tx_list\[0\].debit_usd | String | 消费金额(USD) |
-| bank_tx_list\[0\].credit | String | 存入金额(卡支持的货币) |
-| bank_tx_list\[0\].credit_usd | String | 存入金额(USD) |
-| bank_tx_list\[0\].fee | String | 手续费，只有部分卡有值。 |
-| bank_tx_list\[0\].type | int | 卡交易类型，详见[卡交易类型](/api/reference/enum_card_txn_type#卡交易类型) |
-| bank_tx_list\[0\].reason | String | 交易失败原因 |
-| bank_tx_list\[0\].tx_currency | String | 实际交易货币 |
-| bank_tx_list\[0\].tx_amount | String | 实际交易货币的交易金额 |
-| bank_tx_list\[0\].end_bal | String | 交易后余额。如果是0，代表没交易后余额 |
-| bank_tx_list\[0\].origin_transaction_id | String | 原消费交易id，退款交易才可能有值 |
-| bank_tx_list\[0\].merchant_country | String | 商户国家 |
+| bank_tx_list[n] | Object | 交易列表 |
+| bank_tx_list[0].trace_no | String | 订单跟踪号 |
+| bank_tx_list[0].tx_type | String | 交易类型，详见[卡交易类型](/api/reference/enum_card_txn_type#卡交易类型) |
+| bank_tx_list[0].tx_status | String | 交易状态，详见[交易状态](/api/reference/enum_trans_status#交易状态) |
+| bank_tx_list[0].tx_id | String | 交易ID |
+| bank_tx_list[0].orig_tx_id | String | 原交易ID |
+| bank_tx_list[0].card_no | String | 卡号 |
+| bank_tx_list[0].transaction_date | String | 交易日期 |
+| bank_tx_list[0].transaction_time | Date | 交易时间戳 |
+| bank_tx_list[0].tx_amount | String | 实际交易金额 |
+| bank_tx_list[0].tx_currency | String | 实际交易货币 |
+| bank_tx_list[0].bill_amount | String | 账单金额 |
+| bank_tx_list[0].bill_currency | String | 账单币种 |
+| bank_tx_list[0].fee | String | 手续费，只有部分卡有，fee包含fx_fee |
+| bank_tx_list[0].fx_fee | String | 换汇手续费，涉及换汇会有 |
+| bank_tx_list[0].description | String | 交易描述 |
+| bank_tx_list[0].reason | String | 交易失败原因 |
+| bank_tx_list[0].merchant_country | String | 商户国家 |
+| bank_tx_list[0].merchant_name | String | 商户名称 |
+| bank_tx_list[0].merchant_mcc | String | 商户mcc码 |
 
 
 ## 交易报文
@@ -68,8 +70,8 @@ POST https://{baseUrl}/api/v1/bank/transaction-record
     "msg": "SUCCESS",
     "result": [
       {
-          "month_year":"022020",
-          "statement_cycle_date": "28/11/2019",
+          "month_year":"072025",
+          "statement_cycle_date": "09/07/2025",
           "opening_balance": "0.00",
           "opening_balance_usd": "0.00",
           "closing_balance": "150.55",
@@ -78,32 +80,25 @@ POST https://{baseUrl}/api/v1/bank/transaction-record
           "available_balance_usd": "N/A",
           "bank_tx_list": [
               {
-                  "transaction_date": "20/11/2019",
-                  "posting_date": "20/11/2019",
-                  "tx_id": "54675678678",                  
-                  "description": "MONTHLY FEE",
-                  "debit": "2.50",
-                  "debit_usd": "2.50",
-                  "credit": "",
-                  "credit_usd": "",
-                  "fee": "0",
-                  "end_bal": "end_bal", //如果是0，代表没交易后余额
-                  "origin_transaction_id": "",
-                  "type": 1
-              },
-              {
-                  "transaction_date": "28/11/2019",
-                  "posting_date": "28/11/2019",
-                  "tx_id": "54675678677",
-                  "description": "MONTHLY FEE",
-                  "debit": "2.50",
-                  "debit_usd": "2.50",
-                  "credit": "",
-                  "credit_usd": "",
-                  "fee": "0",
-                  "end_bal": "end_bal", //如果是0，代表没交易后余额
-                  "origin_transaction_id": "",
-                  "type": 1
+                 "trace_no": "",
+                 "tx_type": "A",
+                 "tx_status": "1",
+                 "tx_id": "2beea362-1713-4854-a9a2-8e6f200e9217",
+                 "orig_tx_id": "",
+                 "card_no": "23678321720000015129",
+                 "transaction_date": "09/07/2025",
+                 "transaction_time": 1752062446000,
+                 "tx_amount": "5",
+                 "tx_currency": "USD",
+                 "bill_amount": "",
+                 "bill_currency": "",
+                 "fee": "0",
+                 "fx_fee": "0",
+                 "description": "Orchard Central , ",
+                 "reason": "",
+                 "merchant_country": "",
+                 "merchant_name": "",
+                 "merchant_mcc": ""
               }
           ]
       }
