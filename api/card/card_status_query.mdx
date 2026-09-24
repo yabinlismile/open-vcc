@@ -13,7 +13,7 @@ GET https://{baseUrl}/api/v1/card/queryStatus
 | Parameter | Type | Requirement | Description |
 | :--- | :--- | :--- | :--- |
 | acct_no | String | O | 机构端用户编号(机构端唯一) |
-| card_no | String | O | 银行卡号 |
+| card_no | String | O | 卡号 |
 | cust_tx_id | String | O | 机构开卡流水号 |
 | page_num | int | O | 页数，默认第1页 |
 | page_size | int | O | 页的大小，默认20条 |
@@ -28,7 +28,7 @@ GET https://{baseUrl}/api/v1/card/queryStatus
 | --- | --- | --- |
 | acct_no | String | 机构端用户编号(机构端唯一) |
 | card_type_id | String | 卡类型ID |
-| card_no | String | 银行卡号 |
+| card_no | String | 卡号 |
 | status | int | 状态码，详见 [卡片状态](/api/reference/enum_card_status#卡状态) |
 | reason | String | 激活失败原因。其他情况为空字符串 |
 | cust_tx_id | String | 机构的开卡流水号 |

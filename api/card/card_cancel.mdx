@@ -12,7 +12,7 @@ POST https://{baseUrl}/api/v1/bank/cancel
 
 | Parameter | Type | Requirement | Description |
 | :--- | :--- | :--- | :--- |
-| card_no | String | M | 银行卡ID |
+| card_no | String | M | 卡号 |
 
 
 ## 响应参数
@@ -20,7 +20,7 @@ POST https://{baseUrl}/api/v1/bank/cancel
 | Parameter | Type | Description |
 | --- | --- | --- |
 | card_type_id | String | 卡类型ID |
-| card_no | String | 银行卡ID |
+| card_no | String | 卡号  |
 | acct_no | String | 机构端用户编号(机构端唯一) |
 | status | int | 卡片状态码，详见[卡片状态](/api/reference/enum_card_status#卡状态) |
 

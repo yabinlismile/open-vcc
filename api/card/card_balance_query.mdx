@@ -12,7 +12,7 @@ POST https://{baseUrl}/api/v1/bank/balance
 
 | Parameter | Type | Requirement | Description |
 | :--- | :--- | :--- | :--- |
-| card_no | String | M | 银行卡ID |
+| card_no | String | M | 卡号 |
 | card_currency | String | O | 卡币种，双币种卡才需要填写 |
 
 
@@ -20,7 +20,7 @@ POST https://{baseUrl}/api/v1/bank/balance
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| card_number | String | 真实银行卡号 |
+| card_number | String | 卡片号码 |
 | card_type | String | 银行卡类型 |
 | current_balance | String | 当前余额（卡支持的货币） |
 | current_balance_usd | String | 当前余额（USD） |

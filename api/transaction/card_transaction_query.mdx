@@ -14,7 +14,7 @@ POST https://{baseUrl}/api/v1/bank/transactionQuery
 | :--- | :--- | :--- | :--- |
 | page_num | int | O | 页数，默认1 |
 | page_size | int | O | 页的大小，默认20 |
-| card_no | String | O | 银行卡ID |
+| card_no | String | O | 卡号 |
 | txn_type | String | O | 交易类型，详见[卡交易类型](/api/reference/enum_card_txn_type#卡交易类型) |
 | trace_no | String | O | 订单跟踪号（与交易流水号不同时为空）  |
 | txn_id | String | O | 交易流水号 |
@@ -31,7 +31,7 @@ POST https://{baseUrl}/api/v1/bank/transactionQuery
 | tx_status | String | 交易状态，详见[交易状态](/api/reference/enum_trans_status#交易状态) |
 | tx_id | String | 交易ID |
 | orig_tx_id | String | 原交易ID |
-| card_no | String | 银行卡ID |
+| card_no | String | 卡号 |
 | transaction_date | String | 交易日期 |
 | transaction_time | Date | 交易时间戳 |
 | tx_amount | String | 实际交易金额 |

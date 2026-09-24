@@ -12,7 +12,7 @@ GET https://{baseUrl}/api/v1/credit/getCardLimitTxn
 
 | Parameter | Type | Requirement | Description |
 | :--- | :--- | :--- | :--- |
-| card_no | String | M | 银行卡ID |
+| card_no | String | M | 卡号 |
 | cust_tx_id | String | O | 机构交易流水id |
 | tx_id | String | O | 平台交易流水id |
 | page_num | int | O | 页数，默认第1页 |
@@ -28,7 +28,7 @@ GET https://{baseUrl}/api/v1/credit/getCardLimitTxn
 | --- | --- | --- |
 | tx_id | String | remCard 交易流水id |
 | cust_tx_id | String | 机构交易流水id |
-| card_no | String | 银行卡ID |
+| card_no | String | 卡号 |
 | amount_limit | String | 当前限额 |
 | old_amount_limit | String | 旧限额 |
 | status | String | 交易状态。 "0" 处理中，"1" 是成功，"2" 是失败 |

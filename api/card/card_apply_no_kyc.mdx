@@ -31,8 +31,8 @@ POST https://{baseUrl}/api/v2/card/create
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| card_no | String | 分配的银行卡ID，查询时用card_no，避免真是卡号信息泄露。生成规则：机构id+8位随机数 +卡种id +卡最后四位 |
-| card_number | String | 分配的真实银行卡号, 只显示前6位和后4位 |
+| card_no | String | 分配的卡号，查询时用card_no，避免真实卡号信息泄露。生成规则：机构id+8位随机数 +卡种id +卡最后四位 |
+| card_number | String | 分配的真实卡片号码, 只显示前6位和后4位 |
 | status | int | 状态码，详见 [卡片状态](/api/reference/enum_card_status#卡状态) |
 
 
